@@ -5,7 +5,7 @@ using namespace std;
 
 //How to: Creer une fenetre
 
-int main (int argc, char **argv) {
+int windowExample (int argc, char **argv) {
 	SDL_Window *window;   		//pointeur window	
 
         SDL_Init (SDL_INIT_VIDEO);  	//Initialisation de la SDL
@@ -24,6 +24,6 @@ int main (int argc, char **argv) {
 	} else {
 		SDL_Delay(3000);	//pause de 3 secondes
 		SDL_DestroyWindow(window);//fermer la fenetre
-		SDL_Quit();		//quitter SDL /!\
+		SDL_Quit();		//quitter SDL [Important!]
 	}
 }

@@ -2,8 +2,27 @@
 ## NetBeans
 #################
 
+//Project files and directories
 nbproject/
+.dep.inc
+
+//Building paths
 build/
 dist/
 
-.dep.inc
+#################
+## CodeLite
+#################
+
+//Project files and directories
+.codelite/
+*.project
+*.workspace
+Leonardo.txt
+
+//Makefiles
+Makefile
+Leonardo.mk
+
+//Building paths
+Debug/

@@ -5,7 +5,7 @@
  * Created on 13 octobre 2015, 11:32
  */
 
-#include <cstdlib>
+#include "SDLtest/windowExample.h"
 
 using namespace std;
 
@@ -14,6 +14,6 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    return 0;
+    return windowExample(argc, argv);
 }
 
