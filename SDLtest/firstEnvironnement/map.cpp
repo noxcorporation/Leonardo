@@ -1,4 +1,4 @@
-#include <SDL2/SDL>
+#include <SDL2/SDL.h>
 #include <iostream>
 
 using namespace std;
@@ -18,7 +18,7 @@ Map::Map () {
         500,
         640,
         480,
-	SDL_WINWDOW_OPENGL
+	SDL_WINDOW_OPENGL
     );
 
     if (window == NULL)
@@ -26,8 +26,8 @@ Map::Map () {
     else {
         SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
         while( SDL_PollEvent( &event ) ){
-			if (event.type == SDL_KEYDOWN)
-				return 0;
-  		}
+	    if (event.type == SDL_KEYDOWN)
+		return 0;
+  	}
     }            
 }
