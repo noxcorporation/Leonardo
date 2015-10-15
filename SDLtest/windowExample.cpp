@@ -8,9 +8,9 @@ using namespace std;
 int windowExample (int argc, char **argv) {
 	SDL_Window *window;   		//pointeur window	
 
-        SDL_Init (SDL_INIT_VIDEO);  	//Initialisation de la SDL
+	SDL_Init (SDL_INIT_VIDEO);  	//Initialisation de la SDL
 
-        window = SDL_CreateWindow(	//Methode creer fenetre
+	window = SDL_CreateWindow(	//Methode creer fenetre
 		"Yo",			//titre
 		500,			//position x initiale
 		500,			//position y initiale
