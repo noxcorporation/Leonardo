@@ -25,9 +25,9 @@ Map::Map () {
 	cout << "Couldn't resolve" << endl;
     else {
         SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-        while( SDL_PollEvent( &event ) ){
-	    if (event.type == SDL_KEYDOWN)
-		return 0;
-  	}
+//        while( SDL_PollEvent( &event ) ){
+//	    if (event.type == SDL_KEYDOWN)
+//		return 0;
+//  	}
     }            
 }
