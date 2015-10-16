@@ -1,21 +1,28 @@
 #include "Render.h"
 
+/*
+ * This constructor initializes SDL and opens a window.
+ **/
 Window::Window() {
 	SDL_Init(SDL_INIT_VIDEO);
 	window = SDL_CreateWindow(
 		"Leonardo",
 		/*
-		 * TO CHANGE:
 		 * Default window position should be center screen.
 		 **/
-		500,
-		500,
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
 		640,
 		480,
 		SDL_WINDOW_OPENGL
 	);
+	// We must call SDL_CreateRenderer in order for draw calls to affect this window.
+	renderer = SDL_CreateRenderer(window, -1, 0);
 }
 
+/*
+ * This destructor closes the window and SDL to free memory.
+ **/
 Window::~Window() {
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -25,6 +32,7 @@ Window::~Window() {
  * No arguments. Returns program exit code.
  * Main program method.
  * This function cycles to update the frame and listen to user input.
+ * One cycle is one frame?
  **/
 int Window::refresh() {
 	bool quit = false; //Don't need it as class variable
