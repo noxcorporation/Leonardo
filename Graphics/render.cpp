@@ -17,10 +17,9 @@ Window::~Window() {
 	SDL_Quit();
 }
 
-Window::refresh() {
+void Window::refresh() {
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_KEYDOWN)
 			delete this;
 	}
-	return 0;
 }
