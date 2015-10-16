@@ -11,17 +11,16 @@
 	Click "Clone in Desktop" in bottom right.
 	Keep the project files in a location of your choice.
 
-2. Install dependencies (GCC 5.2.0, SDL2)
+2. Install dependencies (GCC 4.9.2, SDL2)
 
-	http://www.drangon.org/mirror.wsgi?num=3&fname=mingw-w64-bin-x86_64-20150801.7z
-	Get and unzip mingw64 with GCC 5.2.0.
-	Install in a location of your choice, avoid spaces in file path.
-	Add the mingw64\bin full path to the Windows PATH environment variable.
+	http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/tdm64-gcc-4.9.2-3.exe/download
+	Get and install TDM64 with GCC 4.9.2:
+	Uncheck "Check for updated files on the TDM-GCC server".
+	Leave the rest to default, you can choose your install directory.
 
 	https://www.libsdl.org/release/SDL2-devel-2.0.3-mingw.tar.gz
 	Get and unzip SDL2 for mingw64.
-	Go to the mingw64\include directory and move all files starting with "SDL" to a new SDL2 folder.
-	Consolidate this mingw64 with previous mingw64 folder.
+	Go to the mingw64\include directory and move all files to a new SDL2 folder.
 
 3. Create a project in your favorite IDE and add all code files.
 
@@ -34,20 +33,20 @@
 	## Select the project source folder (with github files) and uncheck "Create a new folder".
 	## Create a new project inside same folder with template "Others" -> "Non-code".
 	## Name Leonardo and uncheck "Create a new folder".
-	## Leave compiler and debugger to default for now. Validate
+	## Leave compiler and debugger to default for now. Validate.
 
 	## Right click the project and "Import files from directory". Check all folders. Validate.
 
-4. Setup IDE to use GCC 5.2.0 and link properly to SDL headers and lib files.
+4. Setup IDE to use GCC 4.9.2 and link properly to SDL headers and lib files.
 
  -> Optional:
 	## In CodeLite go to "Settings" -> "Build settings" -> "Add compilers" -> "Add an existing compiler"
-	## Select the mingw64 main directory. Validate.
+	## Select the TDM-GCC-64 main directory. Name it "TDM-GCC-64 (GCC 4.9.2)".
 	## Go to project right click "Settings".
-	## In "General" change compiler to MinGW GCC 5.2.0.
+	## In "General" change compiler to you newly created one.
 	
-	## In "Compiler", field "Include Paths" add the path to mingw64\include.
-	## In "Linker", field "Libraries Search Path" add the path to mingw64\lib\x64.
+	## In "Compiler", field "Include Paths" add the path to SDL2-2.0.3\include.
+	## In "Linker", field "Libraries Search Path" add the path to SDL2-2.0.3\lib\x64.
 	## In field "Libraries" put "SDL2main;SDL2".
 
 5. Compile the code. Verify that it compiles properly.
@@ -55,11 +54,12 @@
 6. Add the runtimes to run the built executable.
 
 	https://www.libsdl.org/release/SDL2-2.0.3-win32-x64.zip
-	Unzip and drop the SDL runtime DLL in the same folder as the executable.
+	Unzip and drop the SDL runtime DLL next to the executable.
 	Or a directory included in the PATH variable (not recommended).
 
  -> Optional:
 	## For CodeLite put it in the Debug sub-folder of the project directory. Next to Leonardo.exe.
+	## To run the executable you can use the Ctrl-F9 shortcut (re-compiles and runs).
 
 7. You're all set to start contributing.
 	Note: Your github account needs to be authorized to push new code to the master server.
