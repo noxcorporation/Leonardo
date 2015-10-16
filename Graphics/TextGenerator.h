@@ -13,8 +13,8 @@ class TextGenerator {
 		 * Pushes The text into the renderer buffer
 		 **/
 		void renderText(SDL_Renderer renderer);
-	public:
 		SDL_Rect createRectTexture();
+	public:
 		TextGenerator(String message, String font, int fontSize, SDL_Color color, int x, int y);
 		~TextGenerator();
 		String getMessage();
