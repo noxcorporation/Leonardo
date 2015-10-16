@@ -27,3 +27,4 @@ Leonardo.mk
 
 //Building paths
 Debug/
+*.db

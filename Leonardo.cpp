@@ -12,8 +12,5 @@
  */
 int main(int argc, char** argv) {
 	Window window;
-	while(true){
-	if (window.refresh() == 0) {return 0;}
-	}
-	return 1;
+	return window.refresh();
 }
