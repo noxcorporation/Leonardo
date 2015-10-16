@@ -1,4 +1,4 @@
-#include "render.h"
+#include "Render.h"
 
 Window::Window() {
 	SDL_Init(SDL_INIT_VIDEO);
