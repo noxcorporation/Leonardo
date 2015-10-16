@@ -1,11 +1,11 @@
-/* 
+/ 
  * File:   main.cpp
  * Author: Tahj
  *
  * Created on 13 octobre 2015, 11:32
  */
 
-#include "Graphics/render.h"
+#include "Graphics/Render.h"
 
 /*
  * 
