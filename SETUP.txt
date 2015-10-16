@@ -25,8 +25,9 @@
 	Leave the rest to default, you can choose your install directory.
 
 	https://www.libsdl.org/release/SDL2-devel-2.0.3-mingw.tar.gz
-	Get and unzip SDL2 for mingw64.
-	Go to the mingw64\include directory and move all files to a new SDL2 folder.
+	Get and unzip SDL2.
+	Go to the SDL2-2.0.3\include directory and move all files to a new SDL2 folder.
+	It should look like "SDL2-2.0.3\include\SDL2" and all .h files would be there.
 
 3. Create a project in your favorite IDE and add all code files.
 
@@ -52,6 +53,7 @@
 	## In "General" change compiler to you newly created one.
 	
 	## In "Compiler", field "Include Paths" add the path to SDL2-2.0.3\include.
+	## Don't include the SDL2 folder in the path.
 	## In "Linker", field "Libraries Search Path" add the path to SDL2-2.0.3\lib\x64.
 	## In field "Libraries" put "SDL2main;SDL2".
 
