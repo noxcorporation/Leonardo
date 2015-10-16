@@ -10,4 +10,4 @@ class spriteAnimationSet {
 		 * Either float secs or int msecs.
 		 */
 		float animationTime;
-	};
+};

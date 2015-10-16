@@ -26,4 +26,5 @@ int windowExample (int argc, char **argv) {
 		SDL_DestroyWindow(window);//fermer la fenetre
 		SDL_Quit();		//quitter SDL [Important!]
 	}
+	return 0;
 }

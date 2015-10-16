@@ -5,14 +5,12 @@
  * Created on 13 octobre 2015, 11:32
  */
 
-#include "SDLtest/windowExample.h"
-
-using namespace std;
+#include "Graphics/render.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-
-    return windowExample(argc, argv);
+	Window window;
+	return window.refresh();
 }

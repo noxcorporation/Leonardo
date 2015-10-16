@@ -1,14 +1,4 @@
-#include <SDL2/SDL.h>
-
-class Window {
-	private:
-		SDL_Window* window;
-		SDL_Event event;
-	public:
-		Window();
-		~Window();
-		//Add cycling function to refresh program and frame state.
-};
+#include "render.h"
 
 Window::Window() {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -25,4 +15,12 @@ Window::Window() {
 Window::~Window() {
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+Window::refresh() {
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_KEYDOWN)
+			delete this;
+	}
+	return 0;
 }
