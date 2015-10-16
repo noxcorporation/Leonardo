@@ -52,9 +52,12 @@
 	## Go to project right click "Settings".
 	## In "General" change compiler to you newly created one.
 	
-	## In "Compiler", field "Include Paths" add the path to SDL2-2.0.3\include.
+	## In "Compiler", field "Include Paths" add the complete path to SDL2-2.0.3\include.
+	## Starting from your system root (example C: or D:).
+	## Try to avoid a path containing spaces. You can move the SDL2-2.0.3 folder where necessary.
 	## Don't include the SDL2 folder in the path.
-	## In "Linker", field "Libraries Search Path" add the path to SDL2-2.0.3\lib\x64.
+	
+	## In "Linker", field "Libraries Search Path" add the complete path to SDL2-2.0.3\lib\x64. Similar to before.
 	## In field "Libraries" put "SDL2main;SDL2".
 
 5. Compile the code. Verify that it compiles properly.
