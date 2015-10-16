@@ -7,5 +7,5 @@ class Window {
 	public:
 		Window();
 		~Window();
-		void refresh();
+		int refresh();
 };

@@ -1,4 +1,4 @@
- /* 
+/* 
  * File:   main.cpp
  * Author: Tahj
  *
@@ -12,6 +12,8 @@
  */
 int main(int argc, char** argv) {
 	Window window;
-	window.refresh();
-	return 0;
+	while(true){
+	if (window.refresh() == 0) {return 0;}
+	}
+	return 1;
 }

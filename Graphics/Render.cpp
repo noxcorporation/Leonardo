@@ -17,9 +17,10 @@ Window::~Window() {
 	SDL_Quit();
 }
 
-void Window::refresh() {
-	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYDOWN)
-			delete this;
+int Window::refresh() {
+	while (SDL_PollEvent(&event) != 0) {
+		if (event.key.keysym.sym == SDLK_DOWN){return 0;} // Down arrow to quit
+		else if (event.type == SDL_QUIT){return 0;}
 	}
+	return 1;
 }
