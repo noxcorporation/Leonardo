@@ -14,7 +14,7 @@ class TextGenerator {
                 void renderText(SDL_Renderer renderer);
 		SDL_Rect createRectTexture();
 	public:
-		TextGenerator(String font, int size, SDL_Color color, int x, int y);
+		TextGenerator(String message, String font, int size, SDL_Color color, int x, int y);
 		~TextGenerator();
 		String getMessage();
 		int getPosX();
