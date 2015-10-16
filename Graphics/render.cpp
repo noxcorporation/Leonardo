@@ -7,9 +7,11 @@ class Window {
 	public:
 		Window();
 		~Window();
+		//Add cycling function to refresh program and frame state.
 };
 
 Window::Window() {
+	SDL_Init(SDL_INIT_VIDEO);
 	window = SDL_CreateWindow(
 		"Leonardo",
 		500,
