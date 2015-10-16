@@ -47,7 +47,8 @@
 	## In "General" change compiler to MinGW GCC 5.2.0.
 	
 	## In "Compiler", field "Include Paths" add the path to mingw64\include.
-	## In "Linker", field "Libraries Search Path" add the path to mingw64\lib\x64. And in field "Libraries" add "SDL2".
+	## In "Linker", field "Libraries Search Path" add the path to mingw64\lib\x64.
+	## In field "Libraries" put "SDL2main;SDL2".
 
 5. Compile the code. Verify that it compiles properly.
 
