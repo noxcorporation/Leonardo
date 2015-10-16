@@ -6,6 +6,7 @@
 
 	https://desktop.github.com/
 	Install the Git client and create and account on github.
+	Get your account added to the project.
 
 	https://github.com/nox282/Leonardo
 	Click "Clone in Desktop" in bottom right to get a local copy in the client.
@@ -31,8 +32,7 @@
 
 3. Create a project in your favorite IDE and add all code files.
 
- -> Optional: If Beginner or no IDE:
-	## BEGINNER:
+	## BEGINNER/OPTIONAL:
 	## http://downloads.codelite.org/downloads.php?windows_64
 	## Install CodeLite.
 
@@ -46,7 +46,7 @@
 
 4. Setup IDE to use GCC 4.9.2 and link properly to SDL headers and lib files.
 
- -> Optional:
+	## BEGINNER/OPTIONAL:
 	## In CodeLite go to "Settings" -> "Build settings" -> "Add compilers" -> "Add an existing compiler"
 	## Select the TDM-GCC-64 main directory. Name it "TDM-GCC-64 (GCC 4.9.2)".
 	## Go to project right click "Settings".
@@ -62,6 +62,7 @@
 
 5. Compile the code. Verify that it compiles properly.
 	
+	## BEGINNER/OPTIONAL:
 	## For CodeLite it is in "Build" -> "Build Project". Shortcut F7.
 
 6. Add the runtimes to run the built executable.
@@ -70,7 +71,7 @@
 	Unzip and drop the SDL runtime DLL next to the executable.
 	Or a directory included in the PATH variable (not recommended).
 
- -> Optional:
+	## BEGINNER/OPTIONAL:
 	## For CodeLite put it in the Debug sub-folder of the project directory. Next to Leonardo.exe.
 	## To run the executable you can use the Ctrl-F9 shortcut (re-compiles and runs). Or menu "Build" -> "Run".
 
