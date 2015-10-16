@@ -58,6 +58,8 @@
 	## In field "Libraries" put "SDL2main;SDL2".
 
 5. Compile the code. Verify that it compiles properly.
+	
+	## For CodeLite it is in "Build" -> "Build Project". Shortcut F7.
 
 6. Add the runtimes to run the built executable.
 
@@ -67,7 +69,7 @@
 
  -> Optional:
 	## For CodeLite put it in the Debug sub-folder of the project directory. Next to Leonardo.exe.
-	## To run the executable you can use the Ctrl-F9 shortcut (re-compiles and runs).
+	## To run the executable you can use the Ctrl-F9 shortcut (re-compiles and runs). Or menu "Build" -> "Run".
 
 7. You're all set to start contributing.
 	Note: Your github account needs to be authorized to push new code to the master server.
