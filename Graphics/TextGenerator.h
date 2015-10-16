@@ -7,13 +7,14 @@ class TextGenerator {
 		SDL_Texture* message;
 		int posX;
 		int posY;
+	protected:
+		/*
+                 * Pushes The text into the renderer buffer
+                 **/
+                void renderText(SDL_Renderer renderer);
 	public:
 		TextGenerator(String font, int size, SDL_Color color, int x, int y);
 		~TextGenerator();
-		/*
-		 * Pushes The text into the renderer buffer
-		 **/
-		void renderText(SDL_Renderer renderer);
 		String getMessage();
 		int getPosX();
 		int getPoxY();
