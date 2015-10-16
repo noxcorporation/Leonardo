@@ -1,13 +1,13 @@
-class animatedObject {};
+class AnimatedObject {};
 
-class character: animatedObject {};
+class Character: AnimatedObject {};
 
-class playerCharacter: character {};
+class PlayerCharacter: Character {};
 
-class spriteAnimationSet {
+class SpriteAnimationSet {
 		/* 
 		 * Total time the anim should take place for rendering.
 		 * Either float secs or int msecs.
-		 */
+		 **/
 		float animationTime;
 };

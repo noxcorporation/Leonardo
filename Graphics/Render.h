@@ -8,5 +8,5 @@ class Window {
 		Window();
 		~Window();
 		int refresh();
-		bool clearEventQueue();
+		bool processEventQueue();
 };
