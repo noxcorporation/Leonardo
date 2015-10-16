@@ -70,6 +70,7 @@
 	https://www.libsdl.org/release/SDL2-2.0.3-win32-x64.zip
 	Unzip and drop the SDL runtime DLL next to the executable.
 	Or a directory included in the PATH variable (not recommended).
+	Alternatively you can also copy the SDL2.DLL file from the SDL2-2.0.3\lib\x64 folder (not tested).
 
 	## BEGINNER/OPTIONAL:
 	## For CodeLite put it in the Debug sub-folder of the project directory. Next to Leonardo.exe.
