@@ -8,7 +8,13 @@
 	Install the Git client and create and account on github.
 
 	https://github.com/nox282/Leonardo
-	Click "Clone in Desktop" in bottom right.
+	Click "Clone in Desktop" in bottom right to get a local copy in the client.
+	You can also clone from the client if your account is member of the project.
+	Or use this URL: https://github.com/noxcorporation/Leonardo.git
+	
+	Or you can also use the "Download ZIP" button
+	This will not keep files up to date or let you participate to the project directly.
+	
 	Keep the project files in a location of your choice.
 
 2. Install dependencies (GCC 4.9.2, SDL2)
