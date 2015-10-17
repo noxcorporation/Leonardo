@@ -48,9 +48,11 @@ int Window::refresh() {
  * This function aswers user input accordingly.
  **/
 bool Window::processEventQueue() {
-	while (SDL_PollEvent(&event) != 0) { //Clear the event queue
-		if (event.key.keysym.sym == SDLK_DOWN) {return true;} // Down arrow to quit
-		else if (event.type == SDL_QUIT) {return true;}
+	while (SDL_PollEvent(&event) != 0) {	//Clear the event queue
+		if (event.key.keysym.sym == SDLK_DOWN)
+			return true	// Down arrow to quit
+		else if (event.type == SDL_QUIT)
+			return true;
 	}
 	return false;
 }
