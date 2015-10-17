@@ -28,3 +28,6 @@ Leonardo.mk
 //Building paths
 Debug/
 *.db
+
+//YCM files
+.ycm_extra_conf.*
