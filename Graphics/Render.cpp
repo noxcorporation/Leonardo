@@ -50,7 +50,7 @@ int Window::refresh() {
 bool Window::processEventQueue() {
 	while (SDL_PollEvent(&event) != 0) {	//Clear the event queue
 		if (event.key.keysym.sym == SDLK_DOWN)
-			return true	// Down arrow to quit
+			return true;	// Down arrow to quit
 		else if (event.type == SDL_QUIT)
 			return true;
 	}
