@@ -1,5 +1,6 @@
 #include "Render.h"
 
+
 /*
  * This constructor initializes SDL and opens a window.
  **/
@@ -24,6 +25,7 @@ Window::Window() {
  * This destructor closes the window and SDL to free memory.
  **/
 Window::~Window() {
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
@@ -36,15 +38,19 @@ Window::~Window() {
  **/
 int Window::refresh() {
 	bool quit = false; //Don't need it as class variable
-	do{
-		if (processEventQueue()) {quit = true;}
+	
+	do {
+		if (processEventQueue())
+			quit = true;
+		
 		SDL_Delay(17); //aim for 60 fps (17 ms frame time)
-	}while(!quit);
+	} while (!quit);
+	
 	return 0;
 }
 
 /*
- * No arguments. Returns input queue state.
+ * No arguments. Returns program exit command.
  * This function aswers user input accordingly.
  **/
 bool Window::processEventQueue() {
