@@ -28,5 +28,6 @@ void Sprite::setCoords(int X, int Y) {
 }
 
 void Sprite::render(SDL_Renderer* renderer) {
-	
+	SDL_Rect DestinRektion = {coordX, coordY, sprite->getW(), sprite->getH()};
+	SDL_RenderCopy(renderer, sprite->getTexture(), NULL, &DestinRektion);		//Renderer got SDL_Rect.
 }
