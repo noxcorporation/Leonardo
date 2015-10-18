@@ -1,3 +1,4 @@
+#include "Render.h"
 #include "Sprite.h"
 
 
@@ -25,6 +26,11 @@ int Sprite::getY() {
 void Sprite::setCoords(int X, int Y) {
 	coordX = X;
 	coordY = Y;
+}
+
+void Sprite::center() {
+	coordX = (LEONARDO_WINDOW_WIDTH - sprite->getW()) / 2;
+	coordY = (LEONARDO_WINDOW_HEIGHT - sprite->getH()) / 2;
 }
 
 void Sprite::render(SDL_Renderer* renderer) {

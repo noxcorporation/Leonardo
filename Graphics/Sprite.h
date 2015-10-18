@@ -12,6 +12,7 @@ class Sprite {
 		int getX();
 		int getY();
 		void setCoords(int, int);
+		void center();
 		void render(SDL_Renderer*);
 };
 
