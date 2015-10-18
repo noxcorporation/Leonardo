@@ -1,6 +1,7 @@
 #include <SDL2/SDL_image.h>
 #include "Sprite.h"
 #include "Render.h"
+#include "testing/Tahj/TahjTest.h"
 
 
 /*
@@ -27,11 +28,6 @@ Window::Window() {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
-	
-	//Loading test image.
-	Sprite sprite(renderer, std::string("../Assets/Text.png"));
-	sprite.center();
-	sprite.render(renderer);
 }
 
 /*
@@ -69,8 +65,9 @@ void Window::updateFrame() {
  * One cycle is one frame?
  **/
 int Window::cycle() {
-	bool quit = false;		//Don't need it as class variable
+	TahjTest::drawScreen(renderer);
 	
+	bool quit = false;		//Don't need it as class variable
 	do {
 		if (processEventQueue())
 			quit = true;
