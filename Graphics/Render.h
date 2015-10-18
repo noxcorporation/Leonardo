@@ -12,6 +12,10 @@ class Window {
 		SDL_Renderer* renderer;
 		SDL_Event event;
 	protected:
+		/*
+		 * This function aswers user input accordingly.
+		 * NOTE(Tahj): We will probably migrate input management to it's own class eventually.
+		 **/
 		bool processEventQueue();
 		/*
 		 * This function updates the window frame with the renderer buffer data.
@@ -20,5 +24,5 @@ class Window {
 	public:
 		Window();
 		~Window();
-		int refresh();
+		int cycle();
 };

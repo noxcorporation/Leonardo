@@ -12,5 +12,5 @@
  **/
 int main(int argc, char** argv) {
 	Window window;
-	return window.refresh();
+	return window.cycle();
 }
