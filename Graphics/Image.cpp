@@ -8,6 +8,8 @@
 Image::Image(SDL_Renderer* renderer, std::string imageFile) {
 	SDL_Surface* surface;
 	surface = IMG_Load(imageFile.c_str());
+	sizeW = surface->w;
+	sizeH = surface->h;
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 }
@@ -18,4 +20,12 @@ Image::~Image() {
 
 SDL_Texture* Image::getTexture() {
 	return texture;
+}
+
+int Image::getW() {
+	return sizeW;
+}
+
+int Image::getH() {
+	return sizeH;
 }
