@@ -19,6 +19,10 @@ Window::Window() {
 	);
 	// We must call SDL_CreateRenderer in order for draw calls to affect this window.
 	renderer = SDL_CreateRenderer(window, -1, 0);
+	
+	// Clear the screen to black.
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
 }
 
 /*
@@ -45,7 +49,7 @@ bool Window::processEventQueue() {
 }
 
 void Window::updateFrame() {
-	
+	SDL_RenderPresent(renderer);
 }
 
 /*
