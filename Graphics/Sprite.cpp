@@ -4,7 +4,7 @@
 /*
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
-Sprite::Sprite(SDL_Renderer* renderer, std::string imageFile, int X = 0, int Y = 0) {
+Sprite::Sprite(SDL_Renderer* renderer, std::string imageFile, int X, int Y) {
 	sprite = new Image(renderer, imageFile);
 	coordX = X;
 	coordY = Y;

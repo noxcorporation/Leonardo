@@ -7,7 +7,7 @@ class Sprite {
 		int coordX;
 		int coordY;
 	public:
-		Sprite(SDL_Renderer*, std::string, int, int);
+		Sprite(SDL_Renderer*, std::string, int = 0, int = 0);
 		~Sprite();
 		int getX();
 		int getY();
