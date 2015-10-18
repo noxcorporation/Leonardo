@@ -9,6 +9,8 @@ class Sprite {
 	public:
 		Sprite(SDL_Renderer*, std::string, int, int);
 		~Sprite();
+		int getX();
+		int getY();
 		void setCoords(int, int);
 		void render(SDL_Renderer*);
 };
