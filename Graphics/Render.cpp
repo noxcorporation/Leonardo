@@ -1,3 +1,5 @@
+#include <SDL2/SDL_image.h>
+#include "Sprite.h"
 #include "Render.h"
 
 
@@ -6,6 +8,8 @@
  **/
 Window::Window() {
 	SDL_Init(SDL_INIT_VIDEO);
+	IMG_Init(IMG_INIT_PNG);
+	
 	window = SDL_CreateWindow(
 		"Leonardo",
 		/*
@@ -13,8 +17,8 @@ Window::Window() {
 		 **/
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		640,
-		480,
+		LEONARDO_WINDOW_WIDTH,
+		LEONARDO_WINDOW_HEIGHT,
 		SDL_WINDOW_OPENGL
 	);
 	// We must call SDL_CreateRenderer in order for draw calls to affect this window.
@@ -23,6 +27,11 @@ Window::Window() {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	
+	//Loading test image.
+	Sprite sprite(renderer, std::string("../Assets/Text.png"));
+	sprite.center();
+	sprite.render(renderer);
 }
 
 /*
@@ -31,6 +40,7 @@ Window::Window() {
 Window::~Window() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	IMG_Quit();
 	SDL_Quit();
 }
 

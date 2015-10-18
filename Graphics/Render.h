@@ -1,5 +1,8 @@
 #include <SDL2/SDL.h>
 
+#define LEONARDO_WINDOW_WIDTH 640
+#define LEONARDO_WINDOW_HEIGHT 480
+
 
 class Window {
 	private:
