@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "Input/Input.h"
+#include "../Input/Input.h"
 
 
 /*

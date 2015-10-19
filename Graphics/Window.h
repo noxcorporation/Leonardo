@@ -1,5 +1,5 @@
-#ifndef RENDER_H
-#define RENDER_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include "../Leonardo.h"
 #include "Renderer.h"
