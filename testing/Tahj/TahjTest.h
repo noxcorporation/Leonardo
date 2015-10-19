@@ -1,9 +1,9 @@
 #ifndef TAHJTEST_H
 #define TAHJTEST_H
 
-#include "Leonardo.h"
-#include "Graphics/Sprite.h"
-#include "Input/Time.h"
+#include "../../Leonardo.h"
+#include "../../Graphics/Sprite.h"
+#include "../../Input/Time.h"
 
 
 class TahjTest {

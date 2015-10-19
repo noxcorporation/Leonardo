@@ -1,8 +1,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "Leonardo.h"
-#include "testing/Tahj/TahjTest.h"
+#include "../Leonardo.h"
+#include "../testing/Tahj/TahjTest.h"
 
 
 class Renderer {

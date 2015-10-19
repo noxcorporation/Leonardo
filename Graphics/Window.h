@@ -1,8 +1,8 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-#include "Leonardo.h"
-#include "Renderer.h"
+#include "../Leonardo.h"
+#include "../Renderer.h"
 
 
 class Window {
