@@ -1,5 +1,5 @@
-#include "Sprite.h"
 #include "Render.h"
+#include "Sprite.h"
 #include "testing/Tahj/TahjTest.h"
 
 
