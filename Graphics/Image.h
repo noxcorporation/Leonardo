@@ -3,6 +3,9 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 
+#define LEONARDO_FONT_QUARMIC "../Assets/Qarmic_sans_Abridged.ttf"
+
+
 /*
  * Abstract class, Text and ImageFiles will extends from it. 
  **/
@@ -16,8 +19,14 @@ class Image {
         int sizeW;
         int sizeH;
         
-        void createTexture(SDL_Renderer* renderer, SDL_Surface* surface);
-    public:
+        void convertSurface(SDL_Renderer* renderer, SDL_Surface* surface);
+	public:
+		/*
+		 * Make this class astract.
+		 * Any derived class must use it's own destructor and method to produce a texture.
+		 **/
+		virtual ~Image() = 0;
+		
         SDL_Texture* getTexture();
         
         int getW();
@@ -27,20 +36,20 @@ class Image {
 /*
  * SDL_Texture object from a file
  **/
-class FromFiles : public Image {
+class ImageFromFile : public Image {
     public:
         /*
          * renderer is a pointer to the current renderer object,
          * imageFile is the path to the source File.
          **/
-        FromFiles(SDL_Renderer* renderer, std::string imageFile);
-        ~FromFiles();
+        ImageFromFile(SDL_Renderer* renderer, std::string imageFile);
+        ~ImageFromFile();
 };
 
 /*
  * SDL_Texture object from a string.
  **/
-class FromText : public Image {
+class ImageFromText : public Image {
     private:
         std::string text;
         TTF_Font* font;
@@ -49,8 +58,9 @@ class FromText : public Image {
         /*
          * renderer must the pointer to the current renderer object
          * textIn is the string to display, fontIn must be the path to the font.ttf file, colorIn is an SDL_Color struct
+		 * TODO: Add default values.
          **/
-        FromText(SDL_Renderer* renderer, std::string textIn, std::string fontIn, int fontSize, SDL_Color colorIn);
-        ~FromText();
+        ImageFromText(SDL_Renderer* renderer, std::string textIn, std::string fontIn, int fontSize, SDL_Color colorIn);
+        ~ImageFromText();
         std::string getText();
 };
