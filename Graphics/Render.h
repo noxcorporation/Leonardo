@@ -19,7 +19,7 @@ class Window {
 		TahjTest* testObject;
 	protected:
 		/*
-		 * This function aswers user input accordingly.
+		 * This function answers user input accordingly.
 		 * NOTE(Tahj): We will probably migrate input management to it's own class eventually.
 		 **/
 		bool processEventQueue();

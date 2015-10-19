@@ -64,6 +64,9 @@ bool Window::processEventQueue() {
 
 void Window::updateFrame() {
 	SDL_RenderPresent(renderer);
+	//After displaying the render, clear it so it can be used again.
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
 }
 
 /*
