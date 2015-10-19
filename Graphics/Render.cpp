@@ -1,4 +1,3 @@
-#include <SDL2/SDL_image.h>
 #include "Sprite.h"
 #include "Render.h"
 #include "testing/Tahj/TahjTest.h"
@@ -10,6 +9,7 @@
 Window::Window() {
 	SDL_Init(SDL_INIT_VIDEO);
 	IMG_Init(IMG_INIT_PNG);
+	TTF_Init();
 	
 	window = SDL_CreateWindow(
 		"Leonardo",
@@ -36,6 +36,7 @@ Window::Window() {
 Window::~Window() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
 }
