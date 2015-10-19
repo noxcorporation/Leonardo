@@ -1,6 +1,5 @@
 #include "Render.h"
 #include "Sprite.h"
-#include "testing/Tahj/TahjTest.h"
 
 
 /*
@@ -28,6 +27,8 @@ Window::Window() {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	
+	testObject = new TahjTest;
 }
 
 /*
@@ -46,10 +47,16 @@ Window::~Window() {
  * This function aswers user input accordingly.
  **/
 bool Window::processEventQueue() {
-	while (SDL_PollEvent(&event) != 0) {		//Clear the event queue
-		if (event.key.keysym.sym == SDLK_DOWN)	//Down arrow to quit
+	while (SDL_PollEvent(&event) != 0) {			//Clear the event queue
+		if (event.key.keysym.sym == SDLK_DOWN
+		and testObject->getStep() == 1) {			//Down arrow to progress.
+			testObject->drawScreen2(renderer);
+			return false;
+		}
+		else if (event.key.keysym.sym == SDLK_RETURN
+		and testObject->getStep() == 2)				//Enter to quit.
 			return true;
-		else if (event.type == SDL_QUIT)		//QUIT to quit
+		else if (event.type == SDL_QUIT)			//QUIT to quit
 			return true;
 	}
 	return false;
@@ -66,7 +73,7 @@ void Window::updateFrame() {
  * One cycle is one frame?
  **/
 int Window::cycle() {
-	TahjTest::drawScreen(renderer);
+	testObject->drawScreen1(renderer);
 	
 	bool quit = false;		//Don't need it as class variable
 	do {
