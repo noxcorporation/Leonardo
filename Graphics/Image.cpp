@@ -50,7 +50,7 @@ ImageFromText::ImageFromText(SDL_Renderer* renderer, std::string textIn, SDL_Col
     color = colorIn;
     text = textIn;
     SDL_Surface* surface;
-    surface = TTF_RenderText_Blended(font, text.c_str(), color);
+    surface = TTF_RenderUTF8_Blended(font, text.c_str(), color);
     convertSurface(renderer, surface);
 }
 
