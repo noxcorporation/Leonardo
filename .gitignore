@@ -29,5 +29,9 @@ Leonardo.mk
 Debug/
 *.db
 
+#################
+## General
+#################
 //YCM files
 .ycm_extra_conf.*
+
