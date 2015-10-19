@@ -16,12 +16,22 @@ class Sprite {
 		void render(SDL_Renderer*);
 };
 
-class SpriteAnimationSet {
+class Animation {
+	private:
+		Image* images[];		// Array of Images
+		int imageIndex; 		// Number of Images
+		int imageCursor;		// Current anim frame indicator.
 		/* 
 		 * Total time the anim should take place for rendering.
 		 * Either float secs or int msecs.
 		 **/
 		float animationTime;
+	public:
+		Animation(SDL_Renderer*, std::string, int, float);
+		~Animation();
+		SDL_Texture* getTexture();
+		float getTime();
+		void next();
 };
 
 class AnimatedSprite {};
