@@ -22,6 +22,8 @@ class Sprite {
 		~Sprite();
 		int getX();
 		int getY();
+		int getW();
+		int getH();
 		void setCoords(int, int);
 		void center();
 		void render(SDL_Renderer*);

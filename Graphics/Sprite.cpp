@@ -1,5 +1,5 @@
-#include "Render.h"
 #include "Sprite.h"
+#include "Render.h"
 
 
 /*
@@ -27,6 +27,14 @@ int Sprite::getX() {
 
 int Sprite::getY() {
 	return coordY;
+}
+
+int Sprite::getW() {
+	return image->getW();
+}
+
+int Sprite::getH() {
+	return image->getH();
 }
 
 void Sprite::setCoords(int X, int Y) {
