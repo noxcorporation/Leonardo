@@ -3,7 +3,7 @@
 
 class Sprite {
 	private:
-		Image* sprite;
+		Image* image;
 		int coordX;
 		int coordY;
 	public:

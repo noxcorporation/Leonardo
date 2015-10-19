@@ -6,13 +6,13 @@
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
 Sprite::Sprite(SDL_Renderer* renderer, std::string imageFile, int X, int Y) {
-	sprite = new FromFiles(renderer, imageFile);
+	image = new FromFiles(renderer, imageFile);
 	coordX = X;
 	coordY = Y;
 }
 
 Sprite::~Sprite() {
-	delete sprite;
+	delete image;
 }
 
 int Sprite::getX() {
@@ -29,13 +29,13 @@ void Sprite::setCoords(int X, int Y) {
 }
 
 void Sprite::center() {
-	coordX = (LEONARDO_WINDOW_WIDTH - sprite->getW()) / 2;
-	coordY = (LEONARDO_WINDOW_HEIGHT - sprite->getH()) / 2;
+	coordX = (LEONARDO_WINDOW_WIDTH - image->getW()) / 2;
+	coordY = (LEONARDO_WINDOW_HEIGHT - image->getH()) / 2;
 }
 
 void Sprite::render(SDL_Renderer* renderer) {
-	SDL_Rect DestinRektion = {coordX, coordY, sprite->getW(), sprite->getH()};
-	SDL_RenderCopy(renderer, sprite->getTexture(), NULL, &DestinRektion);		//Renderer got SDL_Rect.
+	SDL_Rect DestinRektion = {coordX, coordY, image->getW(), image->getH()};
+	SDL_RenderCopy(renderer, image->getTexture(), NULL, &DestinRektion);		//Renderer got SDL_Rect.
 }
 
 
