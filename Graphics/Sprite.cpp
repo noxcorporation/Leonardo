@@ -6,7 +6,7 @@
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
 Sprite::Sprite(SDL_Renderer* renderer, std::string imageFile, int X, int Y) {
-	sprite = new Image(renderer, imageFile);
+	sprite = new FromFiles(renderer, imageFile);
 	coordX = X;
 	coordY = Y;
 }
@@ -44,7 +44,7 @@ void Sprite::render(SDL_Renderer* renderer) {
 
 Animation::Animation(SDL_Renderer* renderer, std::string animationFolder, int fileNumber, float animTime) {
 	for (int i=1; i <= fileNumber; i++) {
-		images[i] = new Image(renderer, animationFolder + std::to_string(i) + ".png");
+		images[i] = new FromFiles(renderer, animationFolder + std::to_string(i) + ".png");
 	}
 	imageIndex = fileNumber;
 	imageCursor = 1;
