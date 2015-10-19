@@ -1,9 +1,4 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
-#include <string>
-
-#define LEONARDO_FONT_QUARMIC "../Assets/Qarmic_sans_Abridged.ttf"
+#include "Render.h"
 
 
 /*
@@ -60,7 +55,7 @@ class ImageFromText : public Image {
          * textIn is the string to display, fontIn must be the path to the font.ttf file, colorIn is an SDL_Color struct
 		 * TODO: Add default values.
          **/
-        ImageFromText(SDL_Renderer* renderer, std::string textIn, std::string fontIn, int fontSize, SDL_Color colorIn);
+        ImageFromText(SDL_Renderer* renderer, std::string textIn, SDL_Color colorIn = LEONARDO_COLOR_BLACK, int fontSize = 14, std::string fontIn = LEONARDO_FONT_QUARMIC);
         ~ImageFromText();
         std::string getText();
 };

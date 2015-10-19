@@ -45,7 +45,7 @@ ImageFromFile::~ImageFromFile() {
 
 
 //Class ImageFromText
-ImageFromText::ImageFromText(SDL_Renderer* renderer, std::string textIn, std::string fontIn, int fontSize, SDL_Color colorIn) {
+ImageFromText::ImageFromText(SDL_Renderer* renderer, std::string textIn, SDL_Color colorIn, int fontSize, std::string fontIn) {
     font = TTF_OpenFont(fontIn.c_str(), fontSize);
     color = colorIn;
     text = textIn;
