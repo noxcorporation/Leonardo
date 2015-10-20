@@ -1,12 +1,13 @@
 #include "Renderer.h"
-#include "testing/Tahj/TahjTest.h"
 
 
 Renderer::Renderer(SDL_Window* window) {
 	renderer = SDL_CreateRenderer(window, -1, 0);
+	test = new TahjTest(renderer);
 }
 
 Renderer::~Renderer() {
+	delete test;
 	SDL_DestroyRenderer(renderer);
 }
 
@@ -17,10 +18,13 @@ void Renderer::drawScreen(int gameScreen) {
 	
 	switch (gameScreen) {
 		case LEONARDO_SCREEN_1:
-			TahjTest::orange(renderer);
+			test->orange();
 			break;
 		case LEONARDO_SCREEN_2:
 			TahjTest::diamond(renderer);
+			break;
+		case LEONARDO_SCREEN_LEVEL:
+			test->red();
 			break;
 	}
 }

@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 #include "Leonardo.h"
+#include "testing/Tahj/TahjTest.h"
 
 
 class Renderer {
@@ -11,6 +12,7 @@ class Renderer {
 		 * Contains the data buffer we will compose before updating each frame.
 		 **/
 		SDL_Renderer* renderer;
+		TahjTest* test;
 	public:
 		// Calls a default renderer for the current window.
 		Renderer(SDL_Window*);
