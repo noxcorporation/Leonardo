@@ -4,7 +4,7 @@
 class Input {
 	public:
 		/*
-		 * This function aswers user input accordingly based on the current game screen.
+		 * This function answers user input accordingly based on the current game screen.
 		 **/
 		static void processQueue(int*);
 };
