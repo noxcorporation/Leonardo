@@ -4,7 +4,7 @@
  * Created on 13 octobre 2015, 11:32
  **/
 
-#include "Graphics/Render.h"
+#include "Graphics/Window.h"
 
 /*
  * Main function.
