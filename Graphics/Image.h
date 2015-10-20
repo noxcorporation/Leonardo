@@ -55,7 +55,7 @@ class ImageFromText : public Image {
          * textIn is the string to display, fontIn must be the path to the font.ttf file, colorIn is an SDL_Color struct
 		 * TODO: Add default values.
          **/
-        ImageFromText(SDL_Renderer* renderer, std::string textIn, SDL_Color colorIn = LEONARDO_COLOR_BLACK, int fontSize = 14, std::string fontIn = LEONARDO_FONT_QUARMIC);
+        ImageFromText(SDL_Renderer* renderer, std::string textIn = "Sample Text", SDL_Color colorIn = LEONARDO_COLOR_BLACK, int fontSize = 14, std::string fontIn = LEONARDO_FONT_QUARMIC);
         ~ImageFromText();
         std::string getText();
 };
