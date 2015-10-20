@@ -1,19 +1,14 @@
 #ifndef TAHJTEST_H
 #define TAHJTEST_H
 
+#include "Leonardo.h"
+
 
 class TahjTest {
-	private:
-		int programStep;
-	protected:
-		void orange(SDL_Renderer*);
-		void ruby(SDL_Renderer*);
-		void diamond(SDL_Renderer*);
 	public:
-		TahjTest();
-		int getStep();
-		void drawScreen1(SDL_Renderer*);
-		void drawScreen2(SDL_Renderer*);
+		static void orange(SDL_Renderer*);
+		static void ruby(SDL_Renderer*);
+		static void diamond(SDL_Renderer*);
 };
 
 #endif

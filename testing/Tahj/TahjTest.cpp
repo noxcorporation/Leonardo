@@ -1,39 +1,10 @@
-#include "Leonardo.h"
-#include "Graphics/Sprite.h"
-
 #include "TahjTest.h"
+#include "Graphics/Sprite.h"
 
 
 /*
  * Testing code to display basic things on screen.
  **/
-TahjTest::TahjTest() {
-	programStep = 0;
-}
-
-int TahjTest::getStep() {
-	return programStep;
-}
-
-void TahjTest::drawScreen1(SDL_Renderer* renderer) {
-	// Clear the screen to black.
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
-	
-	orange(renderer);
-	programStep = 1;	//Current program step.
-}
-
-void TahjTest::drawScreen2(SDL_Renderer* renderer) {
-	// Clear the screen to black.
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
-	
-	diamond(renderer);
-	programStep = 2;
-}
-
-
 void TahjTest::orange(SDL_Renderer* renderer) {
 	//Loading test image.
 	Sprite sprite(renderer, "../Assets/Text.png");
