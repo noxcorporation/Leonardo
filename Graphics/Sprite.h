@@ -1,9 +1,10 @@
-#include "Image.h"
+#include "Leonardo.h"
 
 
 class Sprite {
 	private:
 		Image* image;
+		SDL_Renderer* renderer;
 		int coordX;
 		int coordY;
 	public:
@@ -26,31 +27,48 @@ class Sprite {
 		int getH();
 		void setCoords(int, int);
 		void center();
-		void render(SDL_Renderer*);
+		void render();
 };
 
 class Animation {
 	private:
-		Image* images[];		// Array of Images
-		int imageIndex; 		// Number of Images
-		int imageCursor;		// Current anim frame indicator.
+		ChainedImage* currentImage;
 		/* 
 		 * Total time the anim should take place for rendering.
 		 * Either float secs or int msecs.
 		 **/
 		float animationTime;
 	public:
-		Animation(SDL_Renderer*, std::string, int, float);
+		Animation(SDL_Renderer*, std::string, int, float = 1);
 		~Animation();
 		SDL_Texture* getTexture();
+		int getW();
+		int getH();
 		float getTime();
 		void next();
 };
 
-class AnimatedSprite {};
+class AnimatedSprite {
+	private:
+		Animation* animation;
+		SDL_Renderer* renderer;
+		int coordX;
+		int coordY;
+	public:
+		AnimatedSprite(SDL_Renderer*, std::string, int);
+		~AnimatedSprite();
+		int getX();
+		int getY();
+		int getW();
+		int getH();
+		void setCoords(int, int);
+		void center();
+		void next();
+		void render();
+};
 
-class ParticleEffect: AnimatedSprite {};
+class ParticleEffect: public AnimatedSprite {};
 
-class Character: AnimatedSprite {};
+class Character: public AnimatedSprite {};
 
-class PlayerCharacter: Character {};
+class PlayerCharacter: public Character {};
