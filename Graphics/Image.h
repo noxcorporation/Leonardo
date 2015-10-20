@@ -1,11 +1,14 @@
-#include "Window.h"
+#ifndef IMAGE_H
+#define IMAGE_H
+
+#include "Leonardo.h"
 
 
 /*
  * Abstract class, Text and ImageFiles will extends from it. 
  **/
 class Image {
-    protected:
+	protected:
         /*
          * End product is the SDL_Texture object.
          **/
@@ -31,20 +34,19 @@ class Image {
 /*
  * SDL_Texture object from a file
  **/
-class ImageFromFile : public Image {
+class ImageFromFile: public Image {
     public:
         /*
          * renderer is a pointer to the current renderer object,
          * imageFile is the path to the source File.
          **/
         ImageFromFile(SDL_Renderer* renderer, std::string imageFile);
-        ~ImageFromFile();
 };
 
 /*
  * SDL_Texture object from a string.
  **/
-class ImageFromText : public Image {
+class ImageFromText: public Image {
     private:
         std::string text;
         TTF_Font* font;
@@ -59,3 +61,18 @@ class ImageFromText : public Image {
         ~ImageFromText();
         std::string getText();
 };
+
+/*
+ * ImageFromFile as a node in a chain.
+ **/
+class ChainedImage: public ImageFromFile {
+	private:
+		ChainedImage* nextImage;
+	public:
+		ChainedImage(SDL_Renderer* renderer, std::string imageFile): ImageFromFile(renderer, imageFile) {};
+		ChainedImage* getNext();
+		// Use this ONLY when initializing the chain to make sure no node gets lost in memory.
+		void setNext(ChainedImage*);
+};
+
+#endif
