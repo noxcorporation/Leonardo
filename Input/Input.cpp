@@ -12,18 +12,24 @@ void Input::processQueue(int* gameScreen) {
 	while (SDL_PollEvent(&event)) {
 		switch (*gameScreen) {
 			case LEONARDO_SCREEN_1:
-				if (event.key.keysym.sym == SDLK_DOWN)		//Down arrow to progress.
+				if (event.key.keysym.sym == SDLK_DOWN)		// Down arrow to progress.
 					*gameScreen = LEONARDO_SCREEN_2;
 				break;
 				
 			case LEONARDO_SCREEN_2:
-				if (event.key.keysym.sym == SDLK_RETURN)	//Enter to quit.
+				if (event.key.keysym.sym == SDLK_RETURN)	// Enter to quit.
 					*gameScreen = LEONARDO_SCREEN_EXIT;
+				if (event.key.keysym.sym == SDLK_a)			// A to progress.
+					*gameScreen = LEONARDO_SCREEN_LEVEL;
 				break;
 				
-			default:
-				if (event.type == SDL_QUIT)					//QUIT to quit.
+			case LEONARDO_SCREEN_LEVEL:
+				if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to quit.
 					*gameScreen = LEONARDO_SCREEN_EXIT;
+				break;
 		}
+		
+		if (event.type == SDL_QUIT)							// Close to quit.
+			*gameScreen = LEONARDO_SCREEN_EXIT;
 	}
 }
