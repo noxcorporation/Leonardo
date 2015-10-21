@@ -40,7 +40,7 @@ class ImageFromFile: public Image {
          * renderer is a pointer to the current renderer object,
          * imageFile is the path to the source File.
          **/
-        ImageFromFile(SDL_Renderer* renderer, std::string imageFile);
+        ImageFromFile(SDL_Renderer* renderer, string imageFile);
 };
 
 /*
@@ -48,7 +48,7 @@ class ImageFromFile: public Image {
  **/
 class ImageFromText: public Image {
     private:
-        std::string text;
+        string text;
         TTF_Font* font;
         SDL_Color color;
     public:
@@ -57,9 +57,9 @@ class ImageFromText: public Image {
          * textIn is the string to display, fontIn must be the path to the font.ttf file, colorIn is an SDL_Color struct
 		 * TODO: Add default values.
          **/
-        ImageFromText(SDL_Renderer* renderer, std::string textIn = "Sample Text", SDL_Color colorIn = LEONARDO_COLOR_BLACK, int fontSize = 14, std::string fontIn = LEONARDO_FONT_QUARMIC);
+        ImageFromText(SDL_Renderer* renderer, string textIn = "Sample Text", SDL_Color colorIn = LEONARDO_COLOR_BLACK, int fontSize = 14, string fontIn = LEONARDO_FONT_QUARMIC);
         ~ImageFromText();
-        std::string getText();
+        string getText();
 };
 
 /*
@@ -69,7 +69,7 @@ class ChainedImage: public ImageFromFile {
 	private:
 		ChainedImage* nextImage;
 	public:
-		ChainedImage(SDL_Renderer* renderer, std::string imageFile): ImageFromFile(renderer, imageFile) {};
+		ChainedImage(SDL_Renderer* renderer, string imageFile): ImageFromFile(renderer, imageFile) {};
 		ChainedImage* getNext();
 		// Use this ONLY when initializing the chain to make sure no node gets lost in memory.
 		void setNext(ChainedImage*);

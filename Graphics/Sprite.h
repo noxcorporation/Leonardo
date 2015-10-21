@@ -1,4 +1,5 @@
 #include "Leonardo.h"
+#include "Image.h"
 
 
 class Sprite {
@@ -11,15 +12,15 @@ class Sprite {
 		/*
 		 * Converts specified image file into a sprite.
 		 **/
-		Sprite(SDL_Renderer*, std::string);
+		Sprite(SDL_Renderer*, string);
 		/*
 		 * Creates a sprite from input text and color.
 		 **/
-		Sprite(SDL_Renderer*, std::string, SDL_Color);
+		Sprite(SDL_Renderer*, string, SDL_Color);
 		/*
 		 * Creates a sprite from input text, color and font size.
 		 **/
-		Sprite(SDL_Renderer*, std::string, SDL_Color, int);
+		Sprite(SDL_Renderer*, string, SDL_Color, int);
 		~Sprite();
 		int getX();
 		int getY();
@@ -39,7 +40,7 @@ class Animation {
 		 **/
 		float animationTime;
 	public:
-		Animation(SDL_Renderer*, std::string, int, float = 1);
+		Animation(SDL_Renderer*, string, int, float = 1);
 		~Animation();
 		SDL_Texture* getTexture();
 		int getW();
@@ -55,7 +56,7 @@ class AnimatedSprite {
 		int coordX;
 		int coordY;
 	public:
-		AnimatedSprite(SDL_Renderer*, std::string, int);
+		AnimatedSprite(SDL_Renderer*, string, int);
 		~AnimatedSprite();
 		int getX();
 		int getY();

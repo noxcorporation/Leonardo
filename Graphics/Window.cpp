@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Input/Input.h"
 
 
 /*
@@ -49,7 +50,7 @@ int Window::cycle() {
 		renderer->drawScreen(gameScreen);
 		renderer->updateFrame();
 		
-		Input::processQueue(&gameScreen);		//Not sure if safe. ~Tahj
+		Input::processQueue(&gameScreen);
 		
 		if	(gameScreen == LEONARDO_SCREEN_EXIT)
 			break;

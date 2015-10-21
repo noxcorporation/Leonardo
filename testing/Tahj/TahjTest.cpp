@@ -10,7 +10,7 @@ void TahjTest::orange() {
 }
 
 void TahjTest::ruby(SDL_Renderer* renderer) {
-	std::string text = "Press DOWN ARROW to close.";
+	string text = "Press DOWN ARROW to close.";
 	SDL_Color color = LEONARDO_COLOR_WHITE;
 	
 	Sprite sprite(renderer, text, color);
@@ -19,8 +19,8 @@ void TahjTest::ruby(SDL_Renderer* renderer) {
 }
 
 void TahjTest::diamond(SDL_Renderer* renderer) {
-	std::string text1 = "Haha! You activated my trap card!";
-	std::string text2 = "It's actually ENTER to close.";
+	string text1 = "Haha! You activated my trap card!";
+	string text2 = "It's actually ENTER to close.";
 	SDL_Color color = LEONARDO_COLOR_WHITE;
 	
 	Sprite sprite1(renderer, text1, color);

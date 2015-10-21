@@ -2,7 +2,11 @@
 #define LEONARDO_H
 
 #include <string>
-#include <iostream>
+#include <chrono>
+
+using std::string;
+using namespace std::chrono;
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
@@ -21,7 +25,5 @@
 #define LEONARDO_SCREEN_1 1
 #define LEONARDO_SCREEN_2 2
 #define LEONARDO_SCREEN_LEVEL 3
-
-#include "Graphics/Image.h"
 
 #endif

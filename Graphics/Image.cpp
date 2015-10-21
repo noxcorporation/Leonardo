@@ -30,7 +30,7 @@ int Image::getH() {
 
 
 //class ImageFromFile
-ImageFromFile::ImageFromFile(SDL_Renderer* renderer, std::string imageFile) {
+ImageFromFile::ImageFromFile(SDL_Renderer* renderer, string imageFile) {
     SDL_Surface* surface;
     surface = IMG_Load(imageFile.c_str());
     convertSurface(renderer, surface);
@@ -41,7 +41,7 @@ ImageFromFile::ImageFromFile(SDL_Renderer* renderer, std::string imageFile) {
 
 
 //Class ImageFromText
-ImageFromText::ImageFromText(SDL_Renderer* renderer, std::string textIn, SDL_Color colorIn, int fontSize, std::string fontIn) {
+ImageFromText::ImageFromText(SDL_Renderer* renderer, string textIn, SDL_Color colorIn, int fontSize, string fontIn) {
     font = TTF_OpenFont(fontIn.c_str(), fontSize);
     color = colorIn;
     text = textIn;
@@ -55,7 +55,7 @@ ImageFromText::~ImageFromText() {
     TTF_CloseFont(font);
 }
 
-std::string ImageFromText::getText() {
+string ImageFromText::getText() {
     return text;
 }
 

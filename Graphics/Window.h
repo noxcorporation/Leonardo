@@ -2,8 +2,7 @@
 #define RENDER_H
 
 #include "Leonardo.h"
-#include "Graphics/Renderer.h"
-#include "Input/Input.h"
+#include "Renderer.h"
 
 
 class Window {

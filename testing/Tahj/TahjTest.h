@@ -1,8 +1,6 @@
 #ifndef TAHJTEST_H
 #define TAHJTEST_H
 
-#include <chrono>
-
 #include "Leonardo.h"
 #include "Graphics/Sprite.h"
 

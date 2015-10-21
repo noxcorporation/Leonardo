@@ -4,14 +4,14 @@
 /*
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
-Sprite::Sprite(SDL_Renderer* rendererIn, std::string imageFile) {
+Sprite::Sprite(SDL_Renderer* rendererIn, string imageFile) {
 	renderer = rendererIn;
 	image = new ImageFromFile(renderer, imageFile);
 	coordX = 0;
 	coordY = 0;
 }
 
-Sprite::Sprite(SDL_Renderer* rendererIn, std::string text, SDL_Color color) {
+Sprite::Sprite(SDL_Renderer* rendererIn, string text, SDL_Color color) {
 	renderer = rendererIn;
 	image = new ImageFromText(renderer, text, color);
 	coordX = 0;
@@ -59,7 +59,7 @@ void Sprite::render() {
 
 
 /*// Initializes Animation from specified parameters as an array.
-Animation::Animation(SDL_Renderer* renderer, std::string animationFolder, int fileNumber, float animTime) {
+Animation::Animation(SDL_Renderer* renderer, string animationFolder, int fileNumber, float animTime) {
 	for (int i=1; i <= fileNumber; i++) {
 		images[i] = new ImageFromFile(renderer, animationFolder + std::to_string(i) + ".png");
 	}
@@ -76,7 +76,7 @@ Animation::~Animation() {
 
 // Initializes Animation from specified parameters as a chain.
 // fileNumber: Total number of animation frame files to load.
-Animation::Animation(SDL_Renderer* renderer, std::string animationFolder, int fileNumber, float animTime) {
+Animation::Animation(SDL_Renderer* renderer, string animationFolder, int fileNumber, float animTime) {
 	currentImage = new ChainedImage(renderer, animationFolder + "1.png");
 	
 	// Used for chain initialization.
@@ -130,7 +130,7 @@ void Animation::next() {
 
 
 
-AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, std::string animationFolder, int fileNumber) {
+AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, string animationFolder, int fileNumber) {
 	renderer = rendererIn;
 	animation = new Animation(renderer, animationFolder, fileNumber);
 	coordX = 0;
