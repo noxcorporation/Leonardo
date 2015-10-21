@@ -19,6 +19,8 @@ using namespace std::chrono;
 #define LEONARDO_WINDOW_WIDTH 640
 #define LEONARDO_WINDOW_HEIGHT 480
 
+enum Rendering {DEFAULT, VSYNC};
+
 //Maybe use an enum instead to describe the current game screen?
 #define LEONARDO_SCREEN_EXIT -1
 #define LEONARDO_SCREEN_NONE 0

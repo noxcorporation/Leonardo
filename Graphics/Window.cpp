@@ -22,7 +22,7 @@ Window::Window() {
 		SDL_WINDOW_OPENGL
 	);
 	
-	renderer = new Renderer(window);
+	renderer = new Renderer(window);		//Add VSYNC if needed. Eventually move this to a settings file.
 	
 	gameScreen = LEONARDO_SCREEN_NONE;
 }

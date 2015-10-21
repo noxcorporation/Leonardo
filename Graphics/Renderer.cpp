@@ -1,13 +1,23 @@
 #include "Renderer.h"
 
 
-Renderer::Renderer(SDL_Window* window, int driverIndex, Uint32 rendererFlags) {
-	renderer = SDL_CreateRenderer(window, driverIndex, rendererFlags);
+Renderer::Renderer(SDL_Window* window, Rendering renderSettings) {
+	switch (renderSettings) {
+		case DEFAULT:
+			renderer = SDL_CreateRenderer(window, -1, 0);
+			break;
+		case VSYNC:
+			// Using vsync-ed accelerated settings.
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC or SDL_RENDERER_ACCELERATED);
+			break;
+	}
+	
 	test = new TahjTest(renderer);
 }
 
 Renderer::~Renderer() {
 	delete test;
+	
 	SDL_DestroyRenderer(renderer);
 }
 

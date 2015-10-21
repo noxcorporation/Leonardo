@@ -16,7 +16,7 @@ class Renderer {
 
 	public:
 		// Calls a default renderer for the current window.
-		Renderer(SDL_Window*, int = -1, Uint32 = SDL_RENDERER_PRESENTVSYNC);
+		Renderer(SDL_Window*, Rendering = DEFAULT);
 		~Renderer();
 		/*
 		 * Fills the renderer buffer with the frame data.
