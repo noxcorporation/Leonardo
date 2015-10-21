@@ -13,6 +13,7 @@ void Input::processQueue(int* gameScreen) {
 		
 		if (event.key.state == SDL_PRESSED)
 			switch (*gameScreen) {
+				
 				case LEONARDO_SCREEN_1:
 					if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
 						*gameScreen = LEONARDO_SCREEN_EXIT;
