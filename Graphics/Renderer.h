@@ -13,9 +13,10 @@ class Renderer {
 		 **/
 		SDL_Renderer* renderer;
 		TahjTest* test;
+
 	public:
 		// Calls a default renderer for the current window.
-		Renderer(SDL_Window*);
+		Renderer(SDL_Window*, int = -1, Uint32 = SDL_RENDERER_PRESENTVSYNC);
 		~Renderer();
 		/*
 		 * Fills the renderer buffer with the frame data.
