@@ -5,17 +5,19 @@
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
 Sprite::Sprite(SDL_Renderer* rendererIn, std::string imageFile) {
-	renderer = rendererIn;
-	image = new ImageFromFile(renderer, imageFile);
+	rendererImage = rendererIn;
+	image = new ImageFromFile(rendererImage, imageFile);
 	coordX = 0;
 	coordY = 0;
+	imageUpdate = true;
 }
 
 Sprite::Sprite(SDL_Renderer* rendererIn, std::string text, SDL_Color color) {
-	renderer = rendererIn;
-	image = new ImageFromText(renderer, text, color);
+	rendererText = rendererIn;
+	image = new ImageFromText(rendererText, text, color);
 	coordX = 0;
 	coordY = 0;
+	textUpdate = true;
 }
 
 Sprite::~Sprite() {
@@ -50,7 +52,10 @@ void Sprite::center() {
 
 void Sprite::render() {
 	SDL_Rect DestinRektion = {coordX, coordY, image->getW(), image->getH()};
-	SDL_RenderCopy(renderer, image->getTexture(), NULL, &DestinRektion);
+	if (imageUpdate)
+		SDL_RenderCopy(rendererImage, image->getTexture(), NULL, &DestinRektion);
+	else if (textUpdate)
+		SDL_RenderCopy(rendererText, image->getTexture(), NULL, &DestinRektion);
 	//Renderer got SDL_Rect.
 }
 

@@ -4,9 +4,12 @@
 class Sprite {
 	private:
 		Image* image;
-		SDL_Renderer* renderer;
+		SDL_Renderer* rendererImage;
+		SDL_Renderer* rendererText;
 		int coordX;
 		int coordY;
+		bool textUpdate = false;
+		bool imageUpdate = false;
 	public:
 		/*
 		 * Converts specified image file into a sprite.
