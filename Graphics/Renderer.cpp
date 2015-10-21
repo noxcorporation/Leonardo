@@ -1,8 +1,8 @@
 #include "Renderer.h"
 
 
-Renderer::Renderer(SDL_Window* window) {
-	renderer = SDL_CreateRenderer(window, -1, 0);
+Renderer::Renderer(SDL_Window* window, int driverIndex, Uint32 rendererFlags) {
+	renderer = SDL_CreateRenderer(window, driverIndex, rendererFlags);
 	test = new TahjTest(renderer);
 }
 

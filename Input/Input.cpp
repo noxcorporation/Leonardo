@@ -15,7 +15,7 @@ void Input::processQueue(int* gameScreen) {
 			switch (*gameScreen) {
 				
 				case LEONARDO_SCREEN_1:
-					if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
+					if (event.key.keysym.sym == SDLK_BACKSPACE || event.key.keysym.sym == SDLK_ESCAPE)	// Backspace to go back.
 						*gameScreen = LEONARDO_SCREEN_EXIT;
 					if (event.key.keysym.sym == SDLK_DOWN)		// Down arrow to progress.
 						*gameScreen = LEONARDO_SCREEN_2;
