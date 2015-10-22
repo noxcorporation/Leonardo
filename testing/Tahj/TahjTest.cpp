@@ -4,11 +4,6 @@
 /*
  * Testing code to display basic things on screen.
  **/
-void TahjTest::orange() {
-	orangeSprite->center();
-	orangeSprite->render();
-}
-
 void TahjTest::ruby(SDL_Renderer* renderer) {
 	string text = "Press DOWN ARROW to close.";
 	SDL_Color color = LEONARDO_COLOR_WHITE;
@@ -36,26 +31,26 @@ void TahjTest::diamond(SDL_Renderer* renderer) {
 }
 
 TahjTest::TahjTest(SDL_Renderer* renderer) {
-	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", 6);
 	orangeSprite = new Sprite(renderer, "../Assets/Text.png");
+	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", 6);
+	redClock = new Clock(6);
 }
 
 TahjTest::~TahjTest() {
-	delete orangeSprite;
+	delete redClock;
 	delete redSprite;
+	delete orangeSprite;
+}
+
+void TahjTest::orange() {
+	orangeSprite->center();
+	orangeSprite->render();
 }
 
 void TahjTest::red() {
-	// This implementation can only read anim fps at compile-time for now.
-	using animFrameDuration = std::chrono::duration<float, std::ratio<1,6>>; //6fps
-	
-	auto now = std::chrono::steady_clock::now();
-	std::chrono::duration<float> diff = now - redLastRender;
-	
-	if (std::chrono::duration_cast<animFrameDuration>(diff).count() >= 1) {
+	if (redClock->update()) {
 		redSprite->next();
 		redSprite->center();
-		redLastRender = now;
 	}
 	
 	redSprite->render();
