@@ -122,7 +122,7 @@
 	Now that you have the sources, you'll need a way to compile them:
 	`apt-get install g++-4.9.2`
 	
-	You will also need the SDL2 framework to make the graphics component to work:
+	You will also need the SDL2 framework to get the graphics component to work:
 	`apt-get install libsdl2`
 	
 	You're almost ready to compile already. The project uses some extra libraries that are facultative part of SDL2.
