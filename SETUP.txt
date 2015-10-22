@@ -94,3 +94,74 @@
 # Linux
 ##########
 
+1. Clone project Leonardo from github to a local folder.
+	
+	First off you'll need to create and account on github and get yourself added to the project.
+	
+	##Please note that all the commands are intended for Debian based distribution with apt-get package manager.
+	##If you happen to use another distribution or package manager, please change the commands arcodingly.
+	
+	Now you'll need to install git, use the following :
+	`apt-get install git` 
+	
+	##You'll probably need the Super User rights to do that. If so then add `sudo` in front of your commands that requires SU.
+	##If you don't have sudo packages installed on your system, then you'll need to log into the SU account using :
+	`su` (although it is not recommended if you're a beginner and/or you don't know what you're doing).
+	
+	Once you have git installed, follow the tutorial on how to set it up properly on :
+	https://github.com/ (step number 1 on the GitHub bootcamp).
+	
+	You're ready to clone the repository into your system, use :
+	`git clone https://github.com/noxcorporation/Leonardo.git /Your/favorite/destination/folder/`
+
+	Please note that you can also use the "Download ZIP" button.
+	This will not keep files up to date or let you participate to the project directly.
+	
+2. Install dependencies (GCC 4.9.2, SDL2, SDL_image, SDL_ttf)
+
+	Now that you have the sources, you'll need a way to compile them:
+	`apt-get install g++-4.9.2`
+	
+	You will also need the SDL2 framework to make the graphics component to work:
+	`apt-get install libsdl2`
+	
+	You're almost ready to compile already. The project uses some extra libraries that are facultative part of SDL2.
+	First off create a directory in the directory of your choice:
+	(Note that it would be better to do that outside of the repository)
+	`mkdir SDL2_image_build && cd SDL2_image_build
+	 wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.0.tar.gz
+	 tar xvf SDL2_image-2.0.0.tar.gz`
+	
+	Now you have the SDL2_image sources, we need to compile them and then install:
+	`cd SDL2_image-2.0.0
+	 ./autogen.sh
+	 ./configure
+	 make
+	 sudo make install`
+	
+	You should have the needed includes into /usr/include/SDL2, if not, check /usr/local/include/SDL2.
+	You'll want to move the .h from the local/include to /usr/include if nescessary.
+	
+	We also need SDL2_ttf sources, the same trick will do:
+	 `mkdir SDL2_ttf_build && cd SDL2_ttf_build
+	 wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.12.tar.gz
+	 tar xvf SDL2_ttf-2.0.12.tar.gz
+	 cd SDL2_image-2.0.0
+	 ./autogen.sh
+	 ./configure
+	 make
+	 sudo make install`
+	 
+	There you have it, you can clean the *_build directories as you don't need them anymore.
+	
+	You can already try and compile files with:
+	`g++ -Wall source.cpp -o executable -lSDL2`
+	
+3. Create a project in your favorite IDE and add all code files.
+
+	## BEGINNER/OPTIONAL:
+	## From there you have two choices, ever you use your favorite text editor and manage your makefile yourself.
+	## Then I'll assume that you know what you're doing.
+	## Or you can install an IDE that will do all the build work for you, in this turorial we'll cover Codelite.
+	## You can get it here :
+	## http://downloads.codelite.org/ (You can support codelite here : http://codelite.org/support.php)
