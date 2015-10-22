@@ -12,13 +12,13 @@
 	Click "Clone in Desktop" in bottom right to get a local copy in the client.
 	You can also clone from the client if your account is member of the project.
 	Or use this URL: https://github.com/noxcorporation/Leonardo.git
-	
+
 	Or you can also use the "Download ZIP" button
 	This will not keep files up to date or let you participate to the project directly.
-	
+
 	Keep the project files in a location of your choice.
 
-2. Install dependencies (GCC 4.9.2, SDL2)
+2. Install dependencies (GCC 4.9.2, SDL2, SDL_image, SDL_ttf)
 
 	http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/tdm64-gcc-4.9.2-3.exe/download
 	Get and install TDM64 with GCC 4.9.2:
@@ -29,6 +29,9 @@
 	Get and unzip SDL2.
 	Go to the SDL2-2.0.3\include directory and move all files to a new SDL2 folder.
 	It should look like "SDL2-2.0.3\include\SDL2" and all .h files would be there.
+
+	https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.0-mingw.tar.gz
+	https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-devel-2.0.12-mingw.tar.gz
 
 3. Create a project in your favorite IDE and add all code files.
 
@@ -44,24 +47,24 @@
 
 	## Right click the project and "Import files from directory". Check all folders. Validate.
 
-4. Setup IDE to use GCC 4.9.2 and link properly to SDL headers and lib files.
+4. Setup IDE to use GCC 4.9.2 for C++11 and link properly to SDL headers and lib files.
 
 	## BEGINNER/OPTIONAL:
 	## In CodeLite go to "Settings" -> "Build settings" -> "Add compilers" -> "Add an existing compiler"
 	## Select the TDM-GCC-64 main directory. Name it "TDM-GCC-64 (GCC 4.9.2)".
 	## Go to project right click "Settings".
 	## In "General" change compiler to you newly created one.
-	
+
 	## In "Compiler", field "Include Paths" add the complete path to SDL2-2.0.3\include.
 	## Starting from your system root (example C: or D:).
 	## Try to avoid a path containing spaces. You can move the SDL2-2.0.3 folder where necessary.
 	## Don't include the SDL2 folder in the path.
-	
+
 	## In "Linker", field "Libraries Search Path" add the complete path to SDL2-2.0.3\lib\x64. Similar to before.
 	## In field "Libraries" put "SDL2main;SDL2".
 
 5. Compile the code. Verify that it compiles properly.
-	
+
 	## BEGINNER/OPTIONAL:
 	## For CodeLite it is in "Build" -> "Build Project". Shortcut F7.
 
@@ -71,6 +74,10 @@
 	Unzip and drop the SDL runtime DLL next to the executable.
 	Or a directory included in the PATH variable (not recommended).
 	Alternatively you can also copy the SDL2.DLL file from the SDL2-2.0.3\lib\x64 folder (not tested).
+
+	https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.0-win32-x64.zip
+	https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.12-win32-x64.zip
+	Same thing, put runtimes next to the program executable.
 
 	## BEGINNER/OPTIONAL:
 	## For CodeLite put it in the Debug sub-folder of the project directory. Next to Leonardo.exe.
