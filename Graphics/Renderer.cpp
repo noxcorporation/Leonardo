@@ -45,8 +45,4 @@ void Renderer::drawScreen(int gameScreen) {
 
 void Renderer::updateFrame() {
 	SDL_RenderPresent(renderer);
-	
-	// Aim for 60 fps (17 ms frame time)
-	// Replace later with a better implementation.
-	SDL_Delay(17);
 }

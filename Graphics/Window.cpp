@@ -23,7 +23,7 @@ Window::Window() {
 	);
 	
 	renderer = new Renderer(window);		//Add VSYNC if needed. Eventually move this to a settings file.
-	cycleClock = new Clock(500);
+	cycleClock = new Clock(LEONARDO_FRAMECAP);
 	
 	gameScreen = LEONARDO_SCREEN_NONE;
 }
