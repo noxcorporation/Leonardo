@@ -21,7 +21,7 @@ using namespace std::chrono;
 
 enum Rendering {DEFAULT, VSYNC};
 
-#define LEONARDO_FRAMECAP 500
+#define LEONARDO_FRAMECAP 60
 
 //Maybe use an enum instead to describe the current game screen?
 #define LEONARDO_SCREEN_EXIT -1

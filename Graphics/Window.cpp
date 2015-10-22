@@ -63,6 +63,8 @@ int Window::cycle() {
 			
 			if (gameScreen == LEONARDO_SCREEN_NONE)
 				gameScreen = LEONARDO_SCREEN_1;
+			
+			SDL_Delay(1000 / (LEONARDO_FRAMECAP + 10));
 		}
 	} while (1);
 	
