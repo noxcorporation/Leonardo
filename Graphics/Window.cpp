@@ -23,6 +23,7 @@ Window::Window() {
 	);
 	
 	renderer = new Renderer(window);		//Add VSYNC if needed. Eventually move this to a settings file.
+	cycleClock = new Clock(500);
 	
 	gameScreen = LEONARDO_SCREEN_NONE;
 }
@@ -31,6 +32,7 @@ Window::Window() {
  * This destructor closes the window and SDL to free memory.
  **/
 Window::~Window() {
+	delete cycleClock;
 	delete renderer;
 	SDL_DestroyWindow(window);
 	
@@ -47,16 +49,21 @@ Window::~Window() {
  **/
 int Window::cycle() {
 	do {
-		renderer->drawScreen(gameScreen);
-		renderer->updateFrame();
-		
-		Input::processQueue(&gameScreen);
-		
-		if	(gameScreen == LEONARDO_SCREEN_EXIT)
-			break;
-		
-		if (gameScreen == LEONARDO_SCREEN_NONE)
-			gameScreen = LEONARDO_SCREEN_1;
+		if (cycleClock->update()) {
+			Sprite frameCounter(renderer->getRenderer(), std::to_string(cycleClock->getActionsPerSecond()), LEONARDO_COLOR_WHITE);
+			
+			renderer->drawScreen(gameScreen);
+			frameCounter.render();
+			renderer->updateFrame();
+			
+			Input::processQueue(&gameScreen);
+			
+			if	(gameScreen == LEONARDO_SCREEN_EXIT)
+				break;
+			
+			if (gameScreen == LEONARDO_SCREEN_NONE)
+				gameScreen = LEONARDO_SCREEN_1;
+		}
 	} while (1);
 	
 	return 0;
