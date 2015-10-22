@@ -1,0 +1,3 @@
+The entirety of the files provided on this repository are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license.
+(Refer to https://creativecommons.org/licenses/by-nc-sa/4.0/ for more information.)
+Please credit https://github.com/noxcorporation/Leonardo/ with any redistribution or modification of the files under the same license.
