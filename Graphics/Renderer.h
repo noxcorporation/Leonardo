@@ -18,6 +18,7 @@ class Renderer {
 		// Calls a default renderer for the current window.
 		Renderer(SDL_Window*, Rendering = DEFAULT);
 		~Renderer();
+		SDL_Renderer* getRenderer();
 		/*
 		 * Fills the renderer buffer with the frame data.
 		 * Input: current game screen value.

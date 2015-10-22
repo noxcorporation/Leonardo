@@ -21,6 +21,10 @@ Renderer::~Renderer() {
 	SDL_DestroyRenderer(renderer);
 }
 
+SDL_Renderer* Renderer::getRenderer() {
+	return renderer;
+}
+
 void Renderer::drawScreen(int gameScreen) {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -38,7 +42,6 @@ void Renderer::drawScreen(int gameScreen) {
 			break;
 	}
 }
-
 
 void Renderer::updateFrame() {
 	SDL_RenderPresent(renderer);
