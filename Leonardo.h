@@ -11,8 +11,8 @@ using namespace std::chrono;
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 
-#define LEONARDO_COLOR_WHITE {255, 255, 255, 255}
-#define LEONARDO_COLOR_BLACK {0, 0, 0, 255}
+#define LEONARDO_COLOR_WHITE SDL_Color {255, 255, 255, 255}
+#define LEONARDO_COLOR_BLACK SDL_Color {0, 0, 0, 255}
 
 #define LEONARDO_FONT_QUARMIC "../Assets/Qarmic_sans_Abridged.ttf"
 
