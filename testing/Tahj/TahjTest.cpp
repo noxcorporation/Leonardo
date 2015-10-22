@@ -13,24 +13,13 @@ void TahjTest::ruby(SDL_Renderer* renderer) {
 	sprite.render();
 }
 
-void TahjTest::diamond(SDL_Renderer* renderer) {
-	string text1 = "Haha! You activated my trap card!";
-	string text2 = "It's actually ENTER to close.";
-	SDL_Color color = LEONARDO_COLOR_WHITE;
-	
-	Sprite sprite1(renderer, text1, color);
-	sprite1.center();
-	Sprite sprite2(renderer, text2, color);
-	sprite2.center();
-	
-	sprite1.setCoords(sprite1.getX(), sprite1.getY() - sprite1.getH() / 2);
-	sprite2.setCoords(sprite2.getX(), sprite2.getY() + sprite2.getH() / 2);
-	
-	sprite1.render();
-	sprite2.render();
-}
-
 TahjTest::TahjTest(SDL_Renderer* renderer) {
+	diamondSprite1 = new Sprite(renderer, "Haha! You activated my trap card!", LEONARDO_COLOR_WHITE);
+	diamondSprite2 = new Sprite(renderer, "It's actually ENTER to close.", LEONARDO_COLOR_WHITE);
+	diamondSprite1->center();
+	diamondSprite2->center();
+	diamondSprite1->setCoords(diamondSprite1->getX(), diamondSprite1->getY() - diamondSprite1->getH() / 2);
+	diamondSprite2->setCoords(diamondSprite2->getX(), diamondSprite2->getY() + diamondSprite2->getH() / 2);
 	orangeSprite = new Sprite(renderer, "../Assets/Text.png");
 	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", 6);
 	redClock = new Clock(6);
@@ -40,6 +29,13 @@ TahjTest::~TahjTest() {
 	delete redClock;
 	delete redSprite;
 	delete orangeSprite;
+	delete diamondSprite2;
+	delete diamondSprite1;
+}
+
+void TahjTest::diamond() {
+	diamondSprite1->render();
+	diamondSprite2->render();
 }
 
 void TahjTest::orange() {

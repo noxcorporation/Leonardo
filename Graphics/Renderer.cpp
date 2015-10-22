@@ -35,7 +35,7 @@ void Renderer::drawScreen(int gameScreen) {
 			test->orange();
 			break;
 		case LEONARDO_SCREEN_2:
-			TahjTest::diamond(renderer);
+			test->diamond();
 			break;
 		case LEONARDO_SCREEN_LEVEL:
 			test->red();

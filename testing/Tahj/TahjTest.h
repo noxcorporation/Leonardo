@@ -8,6 +8,8 @@
 
 class TahjTest {
 	private:
+		Sprite* diamondSprite1;
+		Sprite* diamondSprite2;
 		Sprite* orangeSprite;
 		AnimatedSprite* redSprite;
 		Clock* redClock;
@@ -15,7 +17,7 @@ class TahjTest {
 		TahjTest(SDL_Renderer*);
 		~TahjTest();
 		static void ruby(SDL_Renderer*);
-		static void diamond(SDL_Renderer*);
+		void diamond();
 		void orange();
 		void red();
 };
