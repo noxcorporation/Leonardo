@@ -34,4 +34,9 @@ enum GameScreen {
 	LEONARDO_SCREEN_3
 };
 
+enum SpriteDirection {
+	LEFT,
+	RIGHT
+};
+
 #endif

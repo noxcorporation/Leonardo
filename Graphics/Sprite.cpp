@@ -132,13 +132,15 @@ void Animation::next() {
 
 AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, string animationFolder, int fileNumber) {
 	renderer = rendererIn;
-	animation = new Animation(renderer, animationFolder, fileNumber);
+	idleAnimation = new Animation(renderer, animationFolder, fileNumber);
+	baseDirection = LEFT;
+	renderDirection = LEFT;
 	coordX = 0;
 	coordY = 0;
 }
 
 AnimatedSprite::~AnimatedSprite() {
-	delete animation;
+	delete idleAnimation;
 }
 
 int AnimatedSprite::getX() {
@@ -150,11 +152,11 @@ int AnimatedSprite::getY() {
 }
 
 int AnimatedSprite::getW() {
-	return animation->getW();
+	return idleAnimation->getW();
 }
 
 int AnimatedSprite::getH() {
-	return animation->getH();
+	return idleAnimation->getH();
 }
 
 void AnimatedSprite::setCoords(int X, int Y) {
@@ -163,16 +165,25 @@ void AnimatedSprite::setCoords(int X, int Y) {
 }
 
 void AnimatedSprite::center() {
-	coordX = (LEONARDO_WINDOW_WIDTH - animation->getW()) / 2;
-	coordY = (LEONARDO_WINDOW_HEIGHT - animation->getH()) / 2;
+	coordX = (LEONARDO_WINDOW_WIDTH - idleAnimation->getW()) / 2;
+	coordY = (LEONARDO_WINDOW_HEIGHT - idleAnimation->getH()) / 2;
+}
+
+void AnimatedSprite::setDirection(SpriteDirection direction) {
+	if (direction != renderDirection)
+		renderDirection = direction;
 }
 
 void AnimatedSprite::next() {
-	animation->next();
+	idleAnimation->next();
 }
 
 void AnimatedSprite::render() {
-	SDL_Rect DestinRektion = {coordX, coordY, animation->getW(), animation->getH()};
-	SDL_RenderCopy(renderer, animation->getTexture(), NULL, &DestinRektion);
+	SDL_Rect DestinRektion = {coordX, coordY, idleAnimation->getW(), idleAnimation->getH()};
+	
+	if (renderDirection != baseDirection)
+		SDL_RenderCopyEx(renderer, idleAnimation->getTexture(), NULL, &DestinRektion, 0, NULL, SDL_FLIP_HORIZONTAL);
+	else
+		SDL_RenderCopy(renderer, idleAnimation->getTexture(), NULL, &DestinRektion);
 	//Renderer got SDL_Rect.
 }

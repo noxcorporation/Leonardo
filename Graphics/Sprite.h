@@ -4,8 +4,8 @@
 
 class Sprite {
 	private:
-		Image* image;
 		SDL_Renderer* renderer;
+		Image* image;
 		int coordX;
 		int coordY;
 	public:
@@ -51,8 +51,10 @@ class Animation {
 
 class AnimatedSprite {
 	private:
-		Animation* animation;
 		SDL_Renderer* renderer;
+		Animation* idleAnimation;
+		SpriteDirection baseDirection;
+		SpriteDirection renderDirection;
 		int coordX;
 		int coordY;
 	public:
@@ -64,6 +66,7 @@ class AnimatedSprite {
 		int getH();
 		void setCoords(int, int);
 		void center();
+		void setDirection(SpriteDirection);
 		void next();
 		void render();
 };
