@@ -13,7 +13,7 @@
 //	sprite.render();
 //}
 
-TahjRenderTest::TahjRenderTest(SDL_Renderer* renderer) {
+TahjTest::TahjTest(SDL_Renderer* renderer) {
 	diamondSprite1 = new Sprite(renderer, "Haha! You activated my trap card!", LEONARDO_COLOR_WHITE);
 	diamondSprite2 = new Sprite(renderer, "It's actually ENTER to close.", LEONARDO_COLOR_WHITE);
 	diamondSprite1->center();
@@ -26,7 +26,7 @@ TahjRenderTest::TahjRenderTest(SDL_Renderer* renderer) {
 	redClock = new Clock(6);
 }
 
-TahjRenderTest::~TahjRenderTest() {
+TahjTest::~TahjTest() {
 	delete redClock;
 	delete redSprite;
 	delete orangeSprite;
@@ -34,17 +34,17 @@ TahjRenderTest::~TahjRenderTest() {
 	delete diamondSprite1;
 }
 
-void TahjRenderTest::diamond() {
+void TahjTest::diamondRender() {
 	diamondSprite1->render();
 	diamondSprite2->render();
 }
 
-void TahjRenderTest::orange() {
+void TahjTest::orangeRender() {
 	orangeSprite->center();
 	orangeSprite->render();
 }
 
-void TahjRenderTest::red() {
+void TahjTest::redRender() {
 	if (redClock->update()) {
 		redSprite->next();
 		redSprite->center();
@@ -55,9 +55,7 @@ void TahjRenderTest::red() {
 
 
 
-
-
-void TahjInputTest::diamond(SDL_Event event, GameScreen* gameScreen) {
+void TahjTest::diamondInput(SDL_Event event, GameScreen* gameScreen) {
 	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to exit.
 		*gameScreen = LEONARDO_SCREEN_EXIT;
 	if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to exit.
@@ -66,7 +64,7 @@ void TahjInputTest::diamond(SDL_Event event, GameScreen* gameScreen) {
 		*gameScreen = LEONARDO_SCREEN_2;
 }
 
-void TahjInputTest::orange(SDL_Event event, GameScreen* gameScreen) {
+void TahjTest::orangeInput(SDL_Event event, GameScreen* gameScreen) {
 	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
 		*gameScreen = LEONARDO_SCREEN_1;
 	if (event.key.keysym.sym == SDLK_RETURN)	// Enter to quit.
@@ -75,7 +73,11 @@ void TahjInputTest::orange(SDL_Event event, GameScreen* gameScreen) {
 		*gameScreen = LEONARDO_SCREEN_3;
 }
 
-void TahjInputTest::red(SDL_Event event, GameScreen* gameScreen) {
+void TahjTest::redInput(SDL_Event event, GameScreen* gameScreen) {
 	if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to quit.
 		*gameScreen = LEONARDO_SCREEN_EXIT;
+	if (event.key.keysym.sym == SDLK_LEFT)
+		redSprite->setDirection(LEFT);
+	if (event.key.keysym.sym == SDLK_RIGHT)
+		redSprite->setDirection(RIGHT);
 }

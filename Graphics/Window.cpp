@@ -26,12 +26,16 @@ Window::Window() {
 	cycleClock = new Clock(LEONARDO_FRAMECAP);
 	
 	gameScreen = LEONARDO_SCREEN_NONE;
+	
+	test = new TahjTest(renderer->getRenderer());
 }
 
 /*
  * This destructor closes the window and SDL to free memory.
  **/
 Window::~Window() {
+	delete test;
+	
 	delete cycleClock;
 	delete renderer;
 	SDL_DestroyWindow(window);
@@ -52,11 +56,11 @@ int Window::cycle() {
 		if (cycleClock->update()) {
 			Sprite frameCounter(renderer->getRenderer(), std::to_string(cycleClock->getActionsPerSecond()), LEONARDO_COLOR_WHITE);
 			
-			renderer->drawScreen(gameScreen);
+			renderer->drawScreen(gameScreen, test);
 			frameCounter.render();
 			renderer->updateFrame();
 			
-			Input::processQueue(&gameScreen);
+			Input::processQueue(&gameScreen, test);
 			
 			if	(gameScreen == LEONARDO_SCREEN_EXIT)
 				break;

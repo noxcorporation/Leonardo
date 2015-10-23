@@ -5,7 +5,7 @@
 /*
  * This function aswers user input accordingly.
  **/
-void Input::processQueue(GameScreen* gameScreen) {
+void Input::processQueue(GameScreen* gameScreen, TahjTest* test) {
 	/*
 	 * For each event, input is managed according to the current game screen.
 	 **/
@@ -15,7 +15,7 @@ void Input::processQueue(GameScreen* gameScreen) {
 		if (event.key.state == SDL_PRESSED)
 			switch (*gameScreen) {
 				case LEONARDO_SCREEN_1:
-					TahjInputTest::red(event, gameScreen);
+					test->redInput(event, gameScreen);
 					break;
 				
 				default:

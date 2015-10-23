@@ -1,4 +1,5 @@
 #include "../Leonardo.h"
+#include "../testing/Tahj/TahjTest.h"
 
 
 class Input {
@@ -6,5 +7,5 @@ class Input {
 		/*
 		 * This function answers user input accordingly based on the current game screen.
 		 **/
-		static void processQueue(GameScreen*);
+		static void processQueue(GameScreen*, TahjTest*);
 };
