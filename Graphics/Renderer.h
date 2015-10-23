@@ -23,7 +23,7 @@ class Renderer {
 		 * Fills the renderer buffer with the frame data.
 		 * Input: current game screen value.
 		 **/
-		void drawScreen(int);
+		void drawScreen(GameScreen);
 		/*
 		 * This function updates the window frame to the renderer buffer.
 		 **/

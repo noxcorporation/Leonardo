@@ -14,16 +14,7 @@ void Input::processQueue(GameScreen* gameScreen) {
 		
 		if (event.key.state == SDL_PRESSED)
 			switch (*gameScreen) {
-				
 				case LEONARDO_SCREEN_1:
-					TahjInputTest::diamond(event, gameScreen);
-					break;
-					
-				case LEONARDO_SCREEN_2:
-					TahjInputTest::orange(event, gameScreen);
-					break;
-					
-				case LEONARDO_SCREEN_3:
 					TahjInputTest::red(event, gameScreen);
 					break;
 				

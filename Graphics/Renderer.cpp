@@ -25,20 +25,17 @@ SDL_Renderer* Renderer::getRenderer() {
 	return renderer;
 }
 
-void Renderer::drawScreen(int gameScreen) {
+void Renderer::drawScreen(GameScreen gameScreen) {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	
 	switch (gameScreen) {
 		case LEONARDO_SCREEN_1:
-			test->orange();
-			break;
-		case LEONARDO_SCREEN_2:
-			test->diamond();
-			break;
-		case LEONARDO_SCREEN_3:
 			test->red();
+			break;
+		
+		default:
 			break;
 	}
 }

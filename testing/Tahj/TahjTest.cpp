@@ -22,6 +22,7 @@ TahjRenderTest::TahjRenderTest(SDL_Renderer* renderer) {
 	diamondSprite2->setCoords(diamondSprite2->getX(), diamondSprite2->getY() + diamondSprite2->getH() / 2);
 	orangeSprite = new Sprite(renderer, "../Assets/Text.png");
 	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", 6);
+	redSprite->center();
 	redClock = new Clock(6);
 }
 
@@ -75,8 +76,6 @@ void TahjInputTest::orange(SDL_Event event, GameScreen* gameScreen) {
 }
 
 void TahjInputTest::red(SDL_Event event, GameScreen* gameScreen) {
-	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
-		*gameScreen = LEONARDO_SCREEN_2;
 	if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to quit.
 		*gameScreen = LEONARDO_SCREEN_EXIT;
 }
