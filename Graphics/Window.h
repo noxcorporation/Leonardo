@@ -12,7 +12,7 @@ class Window {
 		/*
 		 * Describes the current game screen.
 		 **/
-		int gameScreen;
+		GameScreen gameScreen;
 		Clock* cycleClock;
 	public:
 		Window();

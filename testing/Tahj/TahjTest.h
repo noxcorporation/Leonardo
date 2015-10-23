@@ -6,7 +6,7 @@
 #include "../../Input/Time.h"
 
 
-class TahjTest {
+class TahjRenderTest {
 	private:
 		Sprite* diamondSprite1;
 		Sprite* diamondSprite2;
@@ -14,12 +14,19 @@ class TahjTest {
 		AnimatedSprite* redSprite;
 		Clock* redClock;
 	public:
-		TahjTest(SDL_Renderer*);
-		~TahjTest();
-		static void ruby(SDL_Renderer*);
+		TahjRenderTest(SDL_Renderer*);
+		~TahjRenderTest();
+//		static void ruby(SDL_Renderer*);
 		void diamond();
 		void orange();
 		void red();
+};
+
+class TahjInputTest {
+	public:
+		static void diamond(SDL_Event, GameScreen*);
+		static void orange(SDL_Event, GameScreen*);
+		static void red(SDL_Event, GameScreen*);
 };
 
 #endif

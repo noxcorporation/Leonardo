@@ -12,7 +12,7 @@ Renderer::Renderer(SDL_Window* window, Rendering renderSettings) {
 			break;
 	}
 	
-	test = new TahjTest(renderer);
+	test = new TahjRenderTest(renderer);
 }
 
 Renderer::~Renderer() {
@@ -37,7 +37,7 @@ void Renderer::drawScreen(int gameScreen) {
 		case LEONARDO_SCREEN_2:
 			test->diamond();
 			break;
-		case LEONARDO_SCREEN_LEVEL:
+		case LEONARDO_SCREEN_3:
 			test->red();
 			break;
 	}

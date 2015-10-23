@@ -1,10 +1,11 @@
 #include "Input.h"
+#include "../testing/Tahj/TahjTest.h"
 
 
 /*
  * This function aswers user input accordingly.
  **/
-void Input::processQueue(int* gameScreen) {
+void Input::processQueue(GameScreen* gameScreen) {
 	/*
 	 * For each event, input is managed according to the current game screen.
 	 **/
@@ -15,26 +16,18 @@ void Input::processQueue(int* gameScreen) {
 			switch (*gameScreen) {
 				
 				case LEONARDO_SCREEN_1:
-					if (event.key.keysym.sym == SDLK_BACKSPACE || event.key.keysym.sym == SDLK_ESCAPE)	// Backspace to go back.
-						*gameScreen = LEONARDO_SCREEN_EXIT;
-					if (event.key.keysym.sym == SDLK_DOWN)		// Down arrow to progress.
-						*gameScreen = LEONARDO_SCREEN_2;
+					TahjInputTest::diamond(event, gameScreen);
 					break;
 					
 				case LEONARDO_SCREEN_2:
-					if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
-						*gameScreen = LEONARDO_SCREEN_1;
-					if (event.key.keysym.sym == SDLK_RETURN)	// Enter to quit.
-						*gameScreen = LEONARDO_SCREEN_EXIT;
-					if (event.key.keysym.sym == SDLK_a)			// A to progress.
-						*gameScreen = LEONARDO_SCREEN_LEVEL;
+					TahjInputTest::orange(event, gameScreen);
 					break;
 					
-				case LEONARDO_SCREEN_LEVEL:
-					if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
-						*gameScreen = LEONARDO_SCREEN_2;
-					if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to quit.
-						*gameScreen = LEONARDO_SCREEN_EXIT;
+				case LEONARDO_SCREEN_3:
+					TahjInputTest::red(event, gameScreen);
+					break;
+				
+				default:
 					break;
 			}
 		

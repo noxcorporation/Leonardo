@@ -6,5 +6,5 @@ class Input {
 		/*
 		 * This function answers user input accordingly based on the current game screen.
 		 **/
-		static void processQueue(int*);
+		static void processQueue(GameScreen*);
 };

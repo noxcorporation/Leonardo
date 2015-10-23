@@ -4,16 +4,16 @@
 /*
  * Testing code to display basic things on screen.
  **/
-void TahjTest::ruby(SDL_Renderer* renderer) {
-	string text = "Press DOWN ARROW to close.";
-	SDL_Color color = LEONARDO_COLOR_WHITE;
-	
-	Sprite sprite(renderer, text, color);
-	sprite.center();
-	sprite.render();
-}
+//void TahjRenderTest::ruby(SDL_Renderer* renderer) {
+//	string text = "Press DOWN ARROW to close.";
+//	SDL_Color color = LEONARDO_COLOR_WHITE;
+//	
+//	Sprite sprite(renderer, text, color);
+//	sprite.center();
+//	sprite.render();
+//}
 
-TahjTest::TahjTest(SDL_Renderer* renderer) {
+TahjRenderTest::TahjRenderTest(SDL_Renderer* renderer) {
 	diamondSprite1 = new Sprite(renderer, "Haha! You activated my trap card!", LEONARDO_COLOR_WHITE);
 	diamondSprite2 = new Sprite(renderer, "It's actually ENTER to close.", LEONARDO_COLOR_WHITE);
 	diamondSprite1->center();
@@ -25,7 +25,7 @@ TahjTest::TahjTest(SDL_Renderer* renderer) {
 	redClock = new Clock(6);
 }
 
-TahjTest::~TahjTest() {
+TahjRenderTest::~TahjRenderTest() {
 	delete redClock;
 	delete redSprite;
 	delete orangeSprite;
@@ -33,21 +33,50 @@ TahjTest::~TahjTest() {
 	delete diamondSprite1;
 }
 
-void TahjTest::diamond() {
+void TahjRenderTest::diamond() {
 	diamondSprite1->render();
 	diamondSprite2->render();
 }
 
-void TahjTest::orange() {
+void TahjRenderTest::orange() {
 	orangeSprite->center();
 	orangeSprite->render();
 }
 
-void TahjTest::red() {
+void TahjRenderTest::red() {
 	if (redClock->update()) {
 		redSprite->next();
 		redSprite->center();
 	}
 	
 	redSprite->render();
+}
+
+
+
+
+
+void TahjInputTest::diamond(SDL_Event event, GameScreen* gameScreen) {
+	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to exit.
+		*gameScreen = LEONARDO_SCREEN_EXIT;
+	if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to exit.
+		*gameScreen = LEONARDO_SCREEN_EXIT;
+	if (event.key.keysym.sym == SDLK_DOWN)		// Down arrow to progress.
+		*gameScreen = LEONARDO_SCREEN_2;
+}
+
+void TahjInputTest::orange(SDL_Event event, GameScreen* gameScreen) {
+	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
+		*gameScreen = LEONARDO_SCREEN_1;
+	if (event.key.keysym.sym == SDLK_RETURN)	// Enter to quit.
+		*gameScreen = LEONARDO_SCREEN_EXIT;
+	if (event.key.keysym.sym == SDLK_a)			// A to progress.
+		*gameScreen = LEONARDO_SCREEN_3;
+}
+
+void TahjInputTest::red(SDL_Event event, GameScreen* gameScreen) {
+	if (event.key.keysym.sym == SDLK_BACKSPACE)	// Backspace to go back.
+		*gameScreen = LEONARDO_SCREEN_2;
+	if (event.key.keysym.sym == SDLK_ESCAPE)	// Escape to quit.
+		*gameScreen = LEONARDO_SCREEN_EXIT;
 }

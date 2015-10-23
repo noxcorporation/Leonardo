@@ -12,7 +12,7 @@ class Renderer {
 		 * Contains the data buffer we will compose before updating each frame.
 		 **/
 		SDL_Renderer* renderer;
-		TahjTest* test;
+		TahjRenderTest* test;
 
 	public:
 		// Calls a default renderer for the current window.
