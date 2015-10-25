@@ -23,11 +23,11 @@ Window::Window() {
 	);
 	
 	renderer = new Renderer(window);		//Add VSYNC if needed. Eventually move this to a settings file.
-	cycleClock = new Clock(LEONARDO_FRAMECAP);
-	
-	gameScreen = LEONARDO_SCREEN_NONE;
-	
 	test = new TahjTest(renderer->getRenderer());
+	renderer->setTest(test);
+	
+	cycleClock = new Clock(LEONARDO_FRAMECAP);
+	gameScreen = LEONARDO_SCREEN_NONE;
 }
 
 /*
@@ -56,7 +56,7 @@ int Window::cycle() {
 		if (cycleClock->update()) {
 			Sprite frameCounter(renderer->getRenderer(), std::to_string(cycleClock->getActionsPerSecond()), LEONARDO_COLOR_WHITE);
 			
-			renderer->drawScreen(gameScreen, test);
+			renderer->drawScreen(gameScreen);
 			frameCounter.render();
 			renderer->updateFrame();
 			

@@ -21,7 +21,11 @@ SDL_Renderer* Renderer::getRenderer() {
 	return renderer;
 }
 
-void Renderer::drawScreen(GameScreen gameScreen, TahjTest* test) {
+void Renderer::setTest(TahjTest* testIn) {
+	test = testIn;
+}
+
+void Renderer::drawScreen(GameScreen gameScreen) {
 	// Clear the screen to black.
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);

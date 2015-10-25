@@ -12,17 +12,18 @@ class Renderer {
 		 * Contains the data buffer we will compose before updating each frame.
 		 **/
 		SDL_Renderer* renderer;
-
+		TahjTest* test;
 	public:
 		// Calls a default renderer for the current window.
 		Renderer(SDL_Window*, Rendering = DEFAULT);
 		~Renderer();
 		SDL_Renderer* getRenderer();
+		void setTest(TahjTest*);
 		/*
 		 * Fills the renderer buffer with the frame data.
 		 * Input: current game screen value.
 		 **/
-		void drawScreen(GameScreen, TahjTest*);
+		void drawScreen(GameScreen);
 		/*
 		 * This function updates the window frame to the renderer buffer.
 		 **/
