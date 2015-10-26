@@ -41,11 +41,11 @@ Duration operator-(TimePoint, TimePoint);
 
 class Clock {
 	private:
-		int updatesPerSecond;
+		float updatesPerSecond;
 		TimePoint lastUpdate;
 		Duration updateDelay;
 	public:
-		Clock(int);
+		Clock(float);
 		bool update();
 		int getActionsPerSecond();
 };

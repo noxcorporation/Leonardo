@@ -53,7 +53,7 @@ Duration operator -(TimePoint A, TimePoint B) {
 
 
 
-Clock::Clock(int actionsPerSecond) {
+Clock::Clock(float actionsPerSecond) {
 	updatesPerSecond = actionsPerSecond;
 }
 
