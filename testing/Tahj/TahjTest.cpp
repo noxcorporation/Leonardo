@@ -21,9 +21,11 @@ TahjTest::TahjTest(SDL_Renderer* renderer) {
 	diamondSprite1->setCoords(diamondSprite1->getX(), diamondSprite1->getY() - diamondSprite1->getH() / 2);
 	diamondSprite2->setCoords(diamondSprite2->getX(), diamondSprite2->getY() + diamondSprite2->getH() / 2);
 	orangeSprite = new Sprite(renderer, "../Assets/Text.png");
-	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", 6);
+	
+	int redFileNumber = 6;
+	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", redFileNumber);
 	redSprite->center();
-	redClock = new Clock(6);
+	redClock = new Clock(redFileNumber / redSprite->getTime());
 }
 
 TahjTest::~TahjTest() {
@@ -45,10 +47,8 @@ void TahjTest::orangeRender() {
 }
 
 void TahjTest::redRender() {
-	if (redClock->update()) {
+	if (redClock->update())
 		redSprite->next();
-		redSprite->center();
-	}
 	
 	redSprite->render();
 }

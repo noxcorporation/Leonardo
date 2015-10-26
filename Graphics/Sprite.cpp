@@ -76,8 +76,15 @@ Animation::~Animation() {
 
 // Initializes Animation from specified parameters as a chain.
 // fileNumber: Total number of animation frame files to load.
-Animation::Animation(SDL_Renderer* renderer, string animationFolder, int fileNumber, float animTime) {
-	currentImage = new ChainedImage(renderer, animationFolder + "1.png");
+Animation::Animation(SDL_Renderer* renderer, string animationFolder, int fileNumber) {
+	MetaDataFile metaFile(animationFolder + "0.txt");
+	animationTime = std::stof(metaFile.getValue());
+	
+	metaFile.openFile(animationFolder + "1.txt");
+	int centerX = std::stoi(metaFile.getValue());
+	int centerY = std::stoi(metaFile.getValue());
+	
+	currentImage = new ChainedImage(renderer, animationFolder + "1.png", centerX, centerY);
 	
 	// Used for chain initialization.
 	ChainedImage* current = currentImage;
@@ -85,14 +92,16 @@ Animation::Animation(SDL_Renderer* renderer, string animationFolder, int fileNum
 	
 	for (int i=1; i <= fileNumber; i++) {
 		if (i < fileNumber) {
-			next = new ChainedImage(renderer, animationFolder + std::to_string(i+1) + ".png");
+			metaFile.openFile(animationFolder + std::to_string(i+1) + ".txt");
+			centerX = std::stoi(metaFile.getValue());
+			centerY = std::stoi(metaFile.getValue());
+			
+			next = new ChainedImage(renderer, animationFolder + std::to_string(i+1) + ".png", centerX, centerY);
 			current->setNext(next);
 			current = next;
 		} else if (i == fileNumber)
 			current->setNext(currentImage);
 	}
-	
-	animationTime = animTime;
 }
 
 Animation::~Animation() {
@@ -114,8 +123,28 @@ int Animation::getW() {
 	return currentImage->getW();
 }
 
+int Animation::getNextW() {
+	return currentImage->getNext()->getW();
+}
+
 int Animation::getH() {
 	return currentImage->getH();
+}
+
+int Animation::getCenterX() {
+	return currentImage->getCenterX();
+}
+
+int Animation::getNextCenterX() {
+	return currentImage->getNext()->getCenterX();
+}
+
+int Animation::getCenterY() {
+	return currentImage->getCenterY();
+}
+
+int Animation::getNextCenterY() {
+	return currentImage->getNext()->getCenterY();
 }
 
 float Animation::getTime() {
@@ -141,6 +170,10 @@ AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, string animationFolder,
 
 AnimatedSprite::~AnimatedSprite() {
 	delete idleAnimation;
+}
+
+float AnimatedSprite::getTime() {
+	return idleAnimation->getTime();
 }
 
 int AnimatedSprite::getX() {
@@ -170,11 +203,43 @@ void AnimatedSprite::center() {
 }
 
 void AnimatedSprite::setDirection(SpriteDirection direction) {
-	if (direction != renderDirection)
+	if (direction != renderDirection) {
+		int offsetX;
+		
+		switch (renderDirection) {
+			case LEFT:
+				offsetX = idleAnimation->getCenterX() - (idleAnimation->getW() - idleAnimation->getCenterX());
+				coordX += offsetX;
+				break;
+			case RIGHT:
+				offsetX = (idleAnimation->getW() - idleAnimation->getCenterX()) - idleAnimation->getCenterX();
+				coordX += offsetX;
+				break;
+		}
+		
 		renderDirection = direction;
+	}
 }
 
 void AnimatedSprite::next() {
+	int offsetX;
+	int offsetY;
+	
+	switch (renderDirection) {
+		case LEFT:
+			offsetX = idleAnimation->getCenterX() - idleAnimation->getNextCenterX();
+			offsetY = idleAnimation->getCenterY() - idleAnimation->getNextCenterY();
+			coordX += offsetX;
+			coordY += offsetY;
+			break;
+		case RIGHT:
+			offsetX = (idleAnimation->getW() - idleAnimation->getCenterX()) - (idleAnimation->getNextW() -  idleAnimation->getNextCenterX());
+			offsetY = idleAnimation->getCenterY() - idleAnimation->getNextCenterY();
+			coordX += offsetX;
+			coordY += offsetY;
+			break;
+	}
+	
 	idleAnimation->next();
 }
 

@@ -40,11 +40,16 @@ class Animation {
 		 **/
 		float animationTime;
 	public:
-		Animation(SDL_Renderer*, string, int, float = 1);
+		Animation(SDL_Renderer*, string, int);
 		~Animation();
 		SDL_Texture* getTexture();
 		int getW();
+		int getNextW();
 		int getH();
+		int getCenterX();
+		int getNextCenterX();
+		int getCenterY();
+		int getNextCenterY();
 		float getTime();
 		void next();
 };
@@ -60,6 +65,7 @@ class AnimatedSprite {
 	public:
 		AnimatedSprite(SDL_Renderer*, string, int);
 		~AnimatedSprite();
+		float getTime();
 		int getX();
 		int getY();
 		int getW();
