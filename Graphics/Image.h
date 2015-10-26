@@ -35,12 +35,17 @@ class Image {
  * SDL_Texture object from a file
  **/
 class ImageFromFile: public Image {
+	private:
+		int centerCoordX;
+		int centerCoordY;
     public:
         /*
          * renderer is a pointer to the current renderer object,
          * imageFile is the path to the source File.
          **/
-        ImageFromFile(SDL_Renderer* renderer, string imageFile);
+		ImageFromFile(SDL_Renderer* renderer, string imageFile, int centerX = 0, int centerY = 0);
+		int getCenterX();
+		int getCenterY();
 };
 
 /*
@@ -69,10 +74,22 @@ class ChainedImage: public ImageFromFile {
 	private:
 		ChainedImage* nextImage;
 	public:
-		ChainedImage(SDL_Renderer* renderer, string imageFile): ImageFromFile(renderer, imageFile) {};
+		ChainedImage(SDL_Renderer* renderer, string imageFile, int centerX = 0, int centerY = 0):
+			ImageFromFile(renderer, imageFile, centerX, centerY) {};
 		ChainedImage* getNext();
 		// Use this ONLY when initializing the chain to make sure no node gets lost in memory.
 		void setNext(ChainedImage*);
+};
+
+class MetaDataFile {
+	private:
+		ifstream* file;
+	public:
+		MetaDataFile();
+		MetaDataFile(string);
+		~MetaDataFile();
+		void openFile(string);
+		string getValue();
 };
 
 #endif

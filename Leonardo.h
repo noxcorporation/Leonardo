@@ -2,9 +2,11 @@
 #define LEONARDO_H
 
 #include <string>
+#include <fstream>
 #include <chrono>
 
 using std::string;
+using std::ifstream;
 using namespace std::chrono;
 
 #include <SDL2/SDL.h>
