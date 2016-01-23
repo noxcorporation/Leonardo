@@ -168,7 +168,9 @@ void Animation::next() {
 
 AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, string animationFolder, int fileNumber) {
 	renderer = rendererIn;
-	idleAnimation = new Animation(renderer, animationFolder, fileNumber);
+	idleAnimation = new Animation(renderer, animationFolder + "idle/", fileNumber);
+	currentAnimation = idleAnimation;
+	animClock = new Clock(fileNumber / currentAnimation->getTime());
 	baseDirection = LEFT;
 	renderDirection = LEFT;
 	coordX = 0;
@@ -176,11 +178,8 @@ AnimatedSprite::AnimatedSprite(SDL_Renderer* rendererIn, string animationFolder,
 }
 
 AnimatedSprite::~AnimatedSprite() {
+	delete animClock;
 	delete idleAnimation;
-}
-
-float AnimatedSprite::getTime() {
-	return idleAnimation->getTime();
 }
 
 int AnimatedSprite::getX() {
@@ -192,11 +191,22 @@ int AnimatedSprite::getY() {
 }
 
 int AnimatedSprite::getW() {
-	return idleAnimation->getW();
+	return currentAnimation->getW();
 }
 
 int AnimatedSprite::getH() {
-	return idleAnimation->getH();
+	return currentAnimation->getH();
+}
+
+void AnimatedSprite::setAnimation(AnimationType type) {
+	switch (type) {
+		case IDLE:
+			currentAnimation = idleAnimation;
+			break;
+		case MOVE:
+			currentAnimation = moveAnimation;
+			break;
+	}
 }
 
 void AnimatedSprite::setCoords(int X, int Y) {
@@ -205,8 +215,8 @@ void AnimatedSprite::setCoords(int X, int Y) {
 }
 
 void AnimatedSprite::center() {
-	coordX = (LEONARDO_WINDOW_WIDTH - idleAnimation->getW()) / 2;
-	coordY = (LEONARDO_WINDOW_HEIGHT - idleAnimation->getH()) / 2;
+	coordX = (LEONARDO_WINDOW_WIDTH - currentAnimation->getW()) / 2;
+	coordY = (LEONARDO_WINDOW_HEIGHT - currentAnimation->getH()) / 2;
 }
 
 void AnimatedSprite::setDirection(SpriteDirection direction) {
@@ -215,11 +225,11 @@ void AnimatedSprite::setDirection(SpriteDirection direction) {
 		
 		switch (renderDirection) {
 			case LEFT:
-				offsetX = idleAnimation->getCenterX() - (idleAnimation->getW() - idleAnimation->getCenterX());
+				offsetX = currentAnimation->getCenterX() - (currentAnimation->getW() - currentAnimation->getCenterX());
 				coordX += offsetX;
 				break;
 			case RIGHT:
-				offsetX = (idleAnimation->getW() - idleAnimation->getCenterX()) - idleAnimation->getCenterX();
+				offsetX = (currentAnimation->getW() - currentAnimation->getCenterX()) - currentAnimation->getCenterX();
 				coordX += offsetX;
 				break;
 		}
@@ -234,28 +244,31 @@ void AnimatedSprite::next() {
 	
 	switch (renderDirection) {
 		case LEFT:
-			offsetX = idleAnimation->getCenterX() - idleAnimation->getNextCenterX();
-			offsetY = idleAnimation->getCenterY() - idleAnimation->getNextCenterY();
+			offsetX = currentAnimation->getCenterX() - currentAnimation->getNextCenterX();
+			offsetY = currentAnimation->getCenterY() - currentAnimation->getNextCenterY();
 			coordX += offsetX;
 			coordY += offsetY;
 			break;
 		case RIGHT:
-			offsetX = (idleAnimation->getW() - idleAnimation->getCenterX()) - (idleAnimation->getNextW() -  idleAnimation->getNextCenterX());
-			offsetY = idleAnimation->getCenterY() - idleAnimation->getNextCenterY();
+			offsetX = (currentAnimation->getW() - currentAnimation->getCenterX()) - (currentAnimation->getNextW() -  currentAnimation->getNextCenterX());
+			offsetY = currentAnimation->getCenterY() - currentAnimation->getNextCenterY();
 			coordX += offsetX;
 			coordY += offsetY;
 			break;
 	}
 	
-	idleAnimation->next();
+	currentAnimation->next();
 }
 
 void AnimatedSprite::render() {
-	SDL_Rect DestinRektion = {coordX, coordY, idleAnimation->getW(), idleAnimation->getH()};
+	if (animClock->update())
+		next();
+	
+	SDL_Rect DestinRektion = {coordX, coordY, currentAnimation->getW(), currentAnimation->getH()};
 	
 	if (renderDirection != baseDirection)
-		SDL_RenderCopyEx(renderer, idleAnimation->getTexture(), NULL, &DestinRektion, 0, NULL, SDL_FLIP_HORIZONTAL);
+		SDL_RenderCopyEx(renderer, currentAnimation->getTexture(), NULL, &DestinRektion, 0, NULL, SDL_FLIP_HORIZONTAL);
 	else
-		SDL_RenderCopy(renderer, idleAnimation->getTexture(), NULL, &DestinRektion);
+		SDL_RenderCopy(renderer, currentAnimation->getTexture(), NULL, &DestinRektion);
 	//Renderer got SDL_Rect.
 }

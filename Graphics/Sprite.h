@@ -1,4 +1,5 @@
 #include "../Leonardo.h"
+#include "../Input/Time.h"
 #include "Image.h"
 
 class Sprite {
@@ -68,15 +69,19 @@ class Animation {
 
 class AnimatedSprite: private Sprite{
 	private:
-		SDL_Renderer* renderer;
+		Animation* currentAnimation;
 		Animation* idleAnimation;
+		Animation* moveAnimation;
+		SDL_Renderer* renderer;
+		Clock* animClock;
 		SpriteDirection baseDirection;
 		SpriteDirection renderDirection;
 	public:
-		AnimatedSprite(SDL_Renderer*, string, int);
+                AnimatedSprite(SDL_Renderer*, string, int);
 		~AnimatedSprite();
 		float getTime();
 		void setDirection(SpriteDirection);
+                void setAnimation(AnimationType type);
 		void next();
                 int getX();
                 int getY();
@@ -85,6 +90,7 @@ class AnimatedSprite: private Sprite{
                 void setCoords(int, int);
                 void center();
                 void render();
+
 };
 
 class ParticleEffect: public AnimatedSprite {};

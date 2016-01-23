@@ -43,4 +43,9 @@ enum SpriteDirection {
 	RIGHT
 };
 
+enum AnimationType {
+	IDLE,
+	MOVE
+};
+
 #endif

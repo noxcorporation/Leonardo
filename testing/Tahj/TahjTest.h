@@ -3,7 +3,6 @@
 
 #include "../../Leonardo.h"
 #include "../../Graphics/Sprite.h"
-#include "../../Input/Time.h"
 
 
 class TahjTest {
@@ -12,7 +11,6 @@ class TahjTest {
 		StaticSprite* diamondSprite2;
 		StaticSprite* orangeSprite;
 		AnimatedSprite* redSprite;
-		Clock* redClock;
 	public:
 		TahjTest(SDL_Renderer*);
 		~TahjTest();
