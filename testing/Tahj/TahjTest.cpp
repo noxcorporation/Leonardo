@@ -25,11 +25,9 @@ TahjTest::TahjTest(SDL_Renderer* renderer) {
 	int redFileNumber = 6;
 	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", redFileNumber);
 	redSprite->center();
-	redClock = new Clock(redFileNumber / redSprite->getTime());
 }
 
 TahjTest::~TahjTest() {
-	delete redClock;
 	delete redSprite;
 	delete orangeSprite;
 	delete diamondSprite2;
@@ -47,9 +45,6 @@ void TahjTest::orangeRender() {
 }
 
 void TahjTest::redRender() {
-	if (redClock->update())
-		redSprite->next();
-	
 	redSprite->render();
 }
 
