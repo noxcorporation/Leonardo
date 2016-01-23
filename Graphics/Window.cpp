@@ -54,7 +54,7 @@ Window::~Window() {
 int Window::cycle() {
 	do {
 		if (cycleClock->update()) {
-			Sprite frameCounter(renderer->getRenderer(), std::to_string(cycleClock->getActionsPerSecond()), LEONARDO_COLOR_WHITE);
+			StaticSprite frameCounter(renderer->getRenderer(), std::to_string(cycleClock->getActionsPerSecond()), LEONARDO_COLOR_WHITE);
 			
 			renderer->drawScreen(gameScreen);
 			frameCounter.render();

@@ -1,34 +1,46 @@
 #include "../Leonardo.h"
 #include "Image.h"
 
-
 class Sprite {
-	private:
-		SDL_Renderer* renderer;
-		Image* image;
-		int coordX;
-		int coordY;
-	public:
-		/*
-		 * Converts specified image file into a sprite.
-		 **/
-		Sprite(SDL_Renderer*, string);
-		/*
-		 * Creates a sprite from input text and color.
-		 **/
-		Sprite(SDL_Renderer*, string, SDL_Color);
-		/*
-		 * Creates a sprite from input text, color and font size.
-		 **/
-		Sprite(SDL_Renderer*, string, SDL_Color, int);
-		~Sprite();
-		int getX();
-		int getY();
-		int getW();
-		int getH();
-		void setCoords(int, int);
-		void center();
-		void render();
+    protected:
+        int coordX;
+        int coordY;    
+    public:
+        virtual int getX() = 0;
+	virtual int getY() = 0;
+	virtual int getW() = 0;
+	virtual int getH() = 0;
+	virtual void setCoords(int, int) = 0;
+	virtual void center() = 0;
+	virtual void render() = 0;
+        virtual ~Sprite() = 0;
+};
+
+class StaticSprite: private Sprite {
+    private:
+        SDL_Renderer* renderer;
+        Image* image;
+    public:
+        /*
+         * Converts specified image file into a sprite.
+         **/
+        StaticSprite(SDL_Renderer*, string);
+        /*
+         * Creates a sprite from input text and color.
+         **/
+        StaticSprite(SDL_Renderer*, string, SDL_Color);
+        /*
+         * Creates a sprite from input text, color and font size.
+         **/
+        StaticSprite(SDL_Renderer*, string, SDL_Color, int);
+        ~StaticSprite();
+        int getX();
+        int getY();
+        int getW();
+        int getH();
+        void setCoords(int, int);
+        void center();
+        void render();
 };
 
 class Animation {
@@ -54,27 +66,25 @@ class Animation {
 		void next();
 };
 
-class AnimatedSprite {
+class AnimatedSprite: private Sprite{
 	private:
 		SDL_Renderer* renderer;
 		Animation* idleAnimation;
 		SpriteDirection baseDirection;
 		SpriteDirection renderDirection;
-		int coordX;
-		int coordY;
 	public:
 		AnimatedSprite(SDL_Renderer*, string, int);
 		~AnimatedSprite();
 		float getTime();
-		int getX();
-		int getY();
-		int getW();
-		int getH();
-		void setCoords(int, int);
-		void center();
 		void setDirection(SpriteDirection);
 		void next();
-		void render();
+                int getX();
+                int getY();
+                int getW();
+                int getH();
+                void setCoords(int, int);
+                void center();
+                void render();
 };
 
 class ParticleEffect: public AnimatedSprite {};

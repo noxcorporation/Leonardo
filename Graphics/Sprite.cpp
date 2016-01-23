@@ -1,54 +1,61 @@
 #include "Sprite.h"
 
+Sprite::~Sprite(){}
+int Sprite::getX(){}
+int Sprite::getY(){}
+int Sprite::getW(){}
+int Sprite::getH(){}
+void Sprite::setCoords(int x, int y) {}
+void Sprite::center() {}
+void Sprite::render() {}
 
 /*
  * Creates a new sprite object from imageFile. Coords are optional.
  **/
-Sprite::Sprite(SDL_Renderer* rendererIn, string imageFile) {
+StaticSprite::StaticSprite(SDL_Renderer* rendererIn, string imageFile) {
 	renderer = rendererIn;
 	image = new ImageFromFile(renderer, imageFile);
 	coordX = 0;
 	coordY = 0;
 }
-
-Sprite::Sprite(SDL_Renderer* rendererIn, string text, SDL_Color color) {
+StaticSprite::StaticSprite(SDL_Renderer* rendererIn, string text, SDL_Color color) {
 	renderer = rendererIn;
 	image = new ImageFromText(renderer, text, color);
 	coordX = 0;
 	coordY = 0;
 }
 
-Sprite::~Sprite() {
+StaticSprite::~StaticSprite() {
 	delete image;
 }
 
-int Sprite::getX() {
+int StaticSprite::getX() {
 	return coordX;
 }
 
-int Sprite::getY() {
+int StaticSprite::getY() {
 	return coordY;
 }
 
-int Sprite::getW() {
+int StaticSprite::getW() {
 	return image->getW();
 }
 
-int Sprite::getH() {
+int StaticSprite::getH() {
 	return image->getH();
 }
 
-void Sprite::setCoords(int X, int Y) {
+void StaticSprite::setCoords(int X, int Y) {
 	coordX = X;
 	coordY = Y;
 }
 
-void Sprite::center() {
+void StaticSprite::center() {
 	coordX = (LEONARDO_WINDOW_WIDTH - image->getW()) / 2;
 	coordY = (LEONARDO_WINDOW_HEIGHT - image->getH()) / 2;
 }
 
-void Sprite::render() {
+void StaticSprite::render() {
 	SDL_Rect DestinRektion = {coordX, coordY, image->getW(), image->getH()};
 	SDL_RenderCopy(renderer, image->getTexture(), NULL, &DestinRektion);
 	//Renderer got SDL_Rect.

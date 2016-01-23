@@ -8,9 +8,9 @@
 
 class TahjTest {
 	private:
-		Sprite* diamondSprite1;
-		Sprite* diamondSprite2;
-		Sprite* orangeSprite;
+		StaticSprite* diamondSprite1;
+		StaticSprite* diamondSprite2;
+		StaticSprite* orangeSprite;
 		AnimatedSprite* redSprite;
 		Clock* redClock;
 	public:

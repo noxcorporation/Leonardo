@@ -14,13 +14,13 @@
 //}
 
 TahjTest::TahjTest(SDL_Renderer* renderer) {
-	diamondSprite1 = new Sprite(renderer, "Haha! You activated my trap card!", LEONARDO_COLOR_WHITE);
-	diamondSprite2 = new Sprite(renderer, "It's actually ENTER to close.", LEONARDO_COLOR_WHITE);
+	diamondSprite1 = new StaticSprite(renderer, "Haha! You activated my trap card!", LEONARDO_COLOR_WHITE);
+	diamondSprite2 = new StaticSprite(renderer, "It's actually ENTER to close.", LEONARDO_COLOR_WHITE);
 	diamondSprite1->center();
 	diamondSprite2->center();
 	diamondSprite1->setCoords(diamondSprite1->getX(), diamondSprite1->getY() - diamondSprite1->getH() / 2);
 	diamondSprite2->setCoords(diamondSprite2->getX(), diamondSprite2->getY() + diamondSprite2->getH() / 2);
-	orangeSprite = new Sprite(renderer, "../Assets/Text.png");
+	orangeSprite = new StaticSprite(renderer, "../Assets/Text.png");
 	
 	int redFileNumber = 6;
 	redSprite = new AnimatedSprite(renderer, "../Assets/Lloyd/", redFileNumber);

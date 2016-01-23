@@ -9,7 +9,6 @@
 
 using std::string;
 using std::ifstream;
-using glm::vec2;
 using namespace std::chrono;
 
 #include <SDL2/SDL.h>
