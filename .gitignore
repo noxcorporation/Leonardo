@@ -22,7 +22,9 @@ Leonardo.txt
 
 //Makefiles
 Makefile
+Makefile.inc
 makefile
+makefile.inc
 Leonardo.mk
 
 //Building paths
@@ -34,4 +36,4 @@ Debug/
 #################
 //YCM files
 .ycm_extra_conf.*
-
+*.o

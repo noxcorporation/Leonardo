@@ -11,6 +11,6 @@
  * Calls the window renderer.
  **/
 int main(int argc, char** argv) {
-	Window window;
-	return window.cycle();
+    Window window;	
+    return window.cycle();
 }

@@ -4,9 +4,12 @@
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <vector>
+#include <glm/vec2.hpp>
 
 using std::string;
 using std::ifstream;
+using glm::vec2;
 using namespace std::chrono;
 
 #include <SDL2/SDL.h>
