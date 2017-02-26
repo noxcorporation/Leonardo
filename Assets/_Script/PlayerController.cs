@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public float acceleration;
-	public float deceralation;
-	public float jumpAcceleration;
+	public float maxSpeed;
+	public float jumpSpeed;
 
 
 	//Engine related
@@ -13,23 +12,14 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private BoxCollider2D collider;
 
-	//GameObject related
-	private float initialDrag;
-	private float height;
-	
 
 	void Start () {
 		renderer = GetComponent<SpriteRenderer>();	
 		rb = GetComponent<Rigidbody2D>();		
 		collider = GetComponent<BoxCollider2D>();
-	
-		initialDrag = rb.drag;
-		height = collider.bounds.extents.y;
-
 	}
 
 	void Update () {
-		Debug.Log(isGrounded());
 		processInput();
 	}
 
@@ -38,27 +28,25 @@ public class PlayerController : MonoBehaviour {
 		processJump();
 	}
 
+
+	/*
+	 * Processes Horizontal movement
+	 */
 	void processHMovement(){
 		float horizontal = Input.GetAxis("Horizontal");
-		
-		if(horizontal != 0){
-			rb.drag = initialDrag;
-			rb.AddForce(new Vector3(horizontal*acceleration*Time.deltaTime, 0, 0));
-		} else if(isGrounded())
-			rb.drag = deceralation;
+		rb.velocity = new Vector2(horizontal * maxSpeed, rb.velocity.y);
 	}
 
 	void processJump(){
-		if(Input.GetButtonDown("Jump"))
-			rb.AddForce(new Vector3(0, jumpAcceleration*Time.deltaTime, 0));
+		if(Input.GetButtonDown("Jump") && isGrounded())
+			rb.velocity = new Vector2( rb.velocity.x, jumpSpeed);
 	}
 
 	bool isGrounded(){
-		return collider.IsTouchingLayers(LayerMask.NameToLayer("FloorLayer"));
+		return collider.IsTouching(GameObject.FindGameObjectWithTag("Floor").GetComponent<Collider2D>());
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		collision
 		renderer.color = new Color(0.5f, 0.5f, 0.5f, 1f); //opaque grey
 	}
 
